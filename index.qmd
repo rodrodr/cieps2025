@@ -45,12 +45,14 @@ Las sesiones tendrán una duración de 5 horas y se llevarán a cabo en el CIEPS
 
 <span style="background-color:goldenrod;color:white;padding:4px; ">DÍA 3 - 22/01/2025</span> de 8 a 13h
 
-<span style="background-color:goldenrod;color:white;padding:4px; ">DÍA 4 - 23/01/2025</span> de 8 a 13h
+<span style="background-color:blue;color:white;padding:4px; ">DÍA 4 - 23/01/2025</span> de 8 a 13h
 
 
 ## `r knitr::asis_output("\U1F916")` Servicio técnico `r knitr::asis_output("\U1F916")`	
 
 Para que podáis reproducir los ejemplos de análisis presentados durante el curso debéis instalar en vuestros ordenadores el [R](https://cran.r-project.org/) y el [RStudio Desktop](https://posit.co/downloads/).
+
+Para los modelos de inteligencia artificial, deben instalar [Ollama](https://ollama.com/download).
 
 También debéis ejecutar el siguiente código en R que instala los paquetes necesarios:
 
@@ -61,7 +63,7 @@ pc <- c("devtools","ggplot2","ggrepel","ggdist",
         "ggiraph","giraphExtra","ggridges","dplyr",
         "vdemdata","sf","cowplot","poliscidata",
         "treemap","treemapify","plotly","networkD3",
-        "gapminder","patchwork","ggcorrplot", 
+        "gapminder","patchwork","ggcorrplot","rollama",
         "ggnetwork","ggridges","ggbeeswarm","ggtext",
         "netrankr","igraph","reactable","RColorBrewer",
         "hrbrthemes","ggthemes","tvthemes","broom",

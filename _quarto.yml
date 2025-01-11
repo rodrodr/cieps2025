@@ -7,14 +7,14 @@ project:
 website:
   title: "Ciencia de datos con R"
   sidebar:
-    collapse-level: 2
+    collapse-level: 1
     contents:
       - text: Introducción al curso
         href: index.qmd
       - section: Ciencia de datos políticos
         contents:
             - text: Ciencias de datos y política
-              href: recursos.qmd
+              href: ciencia_datos.qmd
             - text: Introducción al R
               href: S_1_IntroR.qmd
       - section: Manipulación y análisis
@@ -39,12 +39,12 @@ website:
               href: personalizacion.qmd
             - text: Interactividad
               href: interactivo.qmd
-      - section: Textos e Inteligencia Artificial
+      - section: Textos e IA
         contents:
-            - text: Análisis automatizado de textos
-              href: basico.qmd
+            - text: Análisis de textos
+              href: text_mining.qmd
             - text: Modelos generativos (IA)
-              href: recursos.qmd
+              href: IA.qmd
 
 
   page-footer:
