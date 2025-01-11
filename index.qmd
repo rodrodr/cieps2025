@@ -1,0 +1,86 @@
+---
+title: "Ciencia de datos políticos en R"
+---
+
+
+
+## El curso
+
+
+
+Esta página web forma parte del curso "Ciencia de datos políticos con R". En ella, se recogen los materiales y ejemplos que se desarrollarán durante las sesiones.
+
+
+## El profesor
+
+
+<span style="background-color:purple;color:white;padding:4px;">Rodrigo Rodrigues-Silveira </span> 
+
+[rodrodr@usal.es](mailto:rodrodr@usal.es)
+
+Profesor de ciencia política de la USAL. Director del proyecto "Comportamiento legislativo y erosión democrática en América Latina" (PELA Comportamiento).
+
+## El contenido
+
+Durante el curso se abordarán los siguientes temas:
+
+- Introducción a la <span style="background: url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-1&color=orange);">la ciencia de datos en R</span>
+
+- Manipulación <span style="background: url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-2&color=pink);">y análisis de datos sociales</span> 
+
+- Creación de gráficos y <span style="background: url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-3&color=purple);color:white"><b>narrativas visuales</b></span>
+
+- Análisis de textos <span style="background: url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-5&color=gold);">y modelos de IA generativa</span>
+
+
+
+## Sesiones
+
+Las sesiones tendrán una duración de 5 horas y se llevarán a cabo en el CIEPS.
+
+
+<span style="background-color:darkviolet;color:white;padding:4px;">DÍA 1 - 20/01/2025</span> de 8 a 13h
+
+<span style="background-color:seagreen;color:white;padding:4px; ">DÍA 2 - 21/01/2025</span> de 8 a 13h
+
+<span style="background-color:goldenrod;color:white;padding:4px; ">DÍA 3 - 22/01/2025</span> de 8 a 13h
+
+<span style="background-color:goldenrod;color:white;padding:4px; ">DÍA 4 - 23/01/2025</span> de 8 a 13h
+
+
+## `r knitr::asis_output("\U1F916")` Servicio técnico `r knitr::asis_output("\U1F916")`	
+
+Para que podáis reproducir los ejemplos de análisis presentados durante el curso debéis instalar en vuestros ordenadores el [R](https://cran.r-project.org/) y el [RStudio Desktop](https://posit.co/downloads/).
+
+También debéis ejecutar el siguiente código en R que instala los paquetes necesarios:
+
+```{r, eval=F}
+
+# Crea un vector con los paquetes a instalar
+pc <- c("ggplot2","ggrepel","ggdist",
+        "ggiraph","giraphExtra","ggridges","dplyr",
+        "vdemdata","sf","cowplot","poliscidata",
+        "treemap","treemapify","plotly","networkD3",
+        "gapminder","patchwork","ggcorrplot", 
+        "ggnetwork","ggridges","ggbeeswarm","ggtext",
+        "netrankr","igraph","reactable","RColorBrewer",
+        "hrbrthemes","ggthemes","tvthemes")
+
+## ACTUALIZACIÓN DE PAQUETES (PARA EL DÍA 6 DE JUNIO)
+
+pc <- c("plotly","networkD3",
+        "gapminder","patchwork","ggcorrplot", 
+        "ggnetwork","ggridges","ggbeeswarm","ggtext",
+        "netrankr","igraph","reactable","RColorBrewer",
+        "hrbrthemes","ggthemes","tvthemes")
+
+# Instala los paquetes
+install.packages(pc)
+
+# Instala el paquete tenet que no está en CRAN
+# (si ya no lo habéis instalado en el curso 
+# anterior de introducción al R)
+devtools::install_github("rodrodr/tenet", force=T)
+
+```
+

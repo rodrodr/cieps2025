@@ -1,0 +1,59 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    
+website:
+  title: "Ciencia de datos con R"
+  sidebar:
+    collapse-level: 2
+    contents:
+      - text: Introducción al curso
+        href: index.qmd
+      - section: Ciencia de datos políticos
+        contents:
+            - text: Recursos útiles
+              href: recursos.qmd
+            - text: Otra entrada
+              href: recursos2.qmd
+      - section: Manipulación y análisis
+        contents:
+            - text: Manipulación de datos
+              href: tipos.qmd
+            - text: Tipos de datos
+              href: tipos_datps.qmd
+      - section: Visualización
+        contents:
+            - text: Fundamentos
+              href: basico.qmd
+            - text: Recursos útiles
+              href: recursos.qmd
+            - text: Gramática de los gráficos
+              href: gramatica.qmd
+            - text: Tipos de gráfico
+              href: tipos.qmd
+            - text: Apariencia y temas
+              href: personalizacion.qmd
+            - text: Interactividad
+              href: interactivo.qmd
+
+  page-footer:
+    left: "&copy; Copyright 2025, Rodrigo Rodrigues-Silveira"
+    
+execute:
+  warning: false
+  message: false
+  error: false
+
+format:
+  html:
+    theme: pulse
+    css: styles.css
+    toc: true
+    code-fold: show
+  
+bibliography: references.bib
+
+editor: source
+

@@ -1,0 +1,106 @@
+---
+title: "<b>Recursos</b> <br>útiles para la visualización de datos"
+---
+
+
+
+## Introducción
+
+Existen muchos proyectos que nos ayudan a crear visualizaciones de datos hermosas y efectivas. Algunos de ellos son recursos extremadamente útiles y repositorios de código disponibles para nosotros.
+
+### [Dataviz Inspiration](https://www.dataviz-inspiration.com/){target="_blank"}
+
+La página web Dataviz inspiration provee hermosos gráficos e historias de datos. Estos ejemplos curados nos ayudan a visualizar el potencial completo de la visualización de datos y a obtener algunas ideas que podemos usar para nuestros propios análisis. Uno de los ejemplos sobresalientes es [**Ailing Brussels**](https://bxl-malade.medor.coop/?lang=en){target="_blank"}, un análisis de la desigualdad en Bruselas por la revista belga de investigación Medór. El proyecto emplea mapas, gráficos, animación y una narrativa convincente a través de imágenes, textos y videos para describir la división espacial de Bruselas en cuanto a oportunidades y niveles de precariedad.
+
+
+[![](figures/bruselas.png)](https://bxl-malade.medor.coop/?lang=en){target="_blank"}
+
+
+Visite ambos sitios, [*Dataviz Inspirations*](https://www.dataviz-inspiration.com/){target="_blank"} y [*Ailing Brussels*](https://bxl-malade.medor.coop/?lang=en){target="_blank"}, para tener una maravillosa experiencia de las posibilidades de la visualización de datos.
+
+
+
+### [Data to Viz](https://www.data-to-viz.com/){target="_blank"}
+
+
+El segundo recurso es el Proyecto [*Data to Viz*](https://www.data-to-viz.com/){target="_blank"}. Es el resultado de un gran esfuerzo de sistematización. Yan Holtz, el creador, organizó gráficos según el tipo de datos o el tipo de análisis. Cada gráfico tiene su propia página explicando cómo y en qué ocasión se debe usar o evitar. También proporciona acceso a [*R Graph Gallery*](https://r-graph-gallery.com/){target="_blank"} con código detallado que muestra cómo replicarlo en R.
+
+
+[![](figures/dataviz.png)](https://www.data-to-viz.com/){target="_blank"}
+
+
+
+### [R Graph Gallery](https://r-graph-gallery.com/){target="_blank"}
+
+Como se mencionó anteriormente, esta página web es un repositorio que contiene código para que los usuarios reproduzcan muchos tipos diferentes de gráficos en R. ¿Cómo puedo hacer un gráfico de dispersión en R? Mire la galería y lo descubrirá. ¿Y un gráfico de barras? Lo mismo. Este es un lugar obligatorio para buscar cuando se aprende visualización de datos.
+
+[![](figures/gallery.png)](https://r-graph-gallery.com/){target="_blank"}
+
+
+
+## Proyectos hermosos
+
+En esta sección, presentamos algunos proyectos que nos inspiran y nos muestran cómo la visualización de datos puede ser hermosa y efectiva.
+
+
+### [*Dear Data*](http://www.dear-data.com/theproject){target="_blank"} 
+
+Se trata de un proyecto de dos diseñadoras, Giorgia Lupi y Stefanie Posavec, que consiste en enviar postales semanales con datos personales dibujados a mano. Cada semana, durante un año, las dos diseñadoras recopilaron datos sobre sus vidas cotidianas y los representaron en postales. El proyecto resultante es una colección de visualizaciones de datos dibujadas a mano que revelan la belleza de los datos y la creatividad de las diseñadoras. El proyecto también se convirtió en un libro, *Dear Data*, que recopila las postales y las visualizaciones de datos.
+
+Un breve video explicando el proyecto:
+
+{{< video https://www.youtube.com/watch?v=iqaVe1MCTlA >}}
+
+
+La metodología empleada explicada con más detalle:
+
+{{< video https://vimeo.com/133608605 >}}
+
+<br>
+
+### [*España vive en pisos (El Diario.es)*](https://especiales.eldiario.es/espana-vive-en-pisos/?_ga=2.14402423.1505751021.1664439105-1874779266.1636969305&_gl=1*fws3f8*_ga*MTg3NDc3OTI2Ni4xNjM2OTY5MzA1*_ga_4RZPWREGF3*MTY2NDQzOTEwNS4yNzUuMS4xNjY0NDU3MzkyLjYwLjAuMA..){target="_blank"}
+
+Este proyecto de El Diario.es es un ejemplo de cómo la visualización de datos puede ser utilizada para contar historias complejas. El proyecto visualiza la distribución de la población en España y cómo la mayoría de la gente vive en pisos. La visualización combina mapas, gráficos y narrativa para contar la historia de cómo la mayoría de la gente en España vive en pisos y cómo esto afecta a la calidad de vida y la desigualdad en el país.
+
+No se trata de la única visualización premiada. A día de hoy, el periódico posee el equipo de periodismo de datos más destacado de España y uno de los más reconocidos a nivel internacional.
+
+[![](figures/diario.png)](https://especiales.eldiario.es/espana-vive-en-pisos/?_ga=2.14402423.1505751021.1664439105-1874779266.1636969305&_gl=1*fws3f8*_ga*MTg3NDc3OTI2Ni4xNjM2OTY5MzA1*_ga_4RZPWREGF3*MTY2NDQzOTEwNS4yNzUuMS4xNjY0NDU3MzkyLjYwLjAuMA..){target="_blank"}
+
+
+### [*El Atlas de los ODS*](https://datatopics.worldbank.org/sdgatlas?lang=en){target="_blank"}
+
+El Atlas de los Objetivos de Desarrollo Sostenible (ODS) es un proyecto de la División de Datos del Banco Mundial que visualiza los datos de los ODS en un formato interactivo y accesible. El Atlas proporciona visualizaciones de datos sobre los 17 ODS y los 169 objetivos específicos de los ODS. Los datos se presentan en mapas, gráficos y tablas interactivas que permiten a los usuarios explorar los datos y comparar los indicadores de los ODS en diferentes países y regiones. El Atlas es una herramienta valiosa para los responsables de la toma de decisiones, los investigadores y el público en general que deseen comprender mejor los desafíos y las oportunidades relacionados con los ODS.
+
+[![](figures/atlas_es.png)](https://datatopics.worldbank.org/sdgatlas?lang=es){target="_blank"}
+
+
+
+### [*Poppy field*](https://poppyfield.org/){target="_blank"}
+
+
+Valentina D'Fillipo creó una visualización para conmemorar el centenario de la Primera Guerra Mundial. La visualización muestra la cantidad de soldados que murieron en las guerras ocurridas durante el período comprendido entre 1914 y 2014, representados por amapolas. La visualización es interactiva y permite a los usuarios explorar la cantidad de soldados que murieron en cada país y en cada año en las distintas guerras. La visualización es hermosa y efectiva, y nos recuerda la importancia de la visualización de datos para contar historias y evitar el olvido de eventos históricos importantes. 
+
+[![](figures/poppy.png)](https://poppyfield.org/){target="_blank"}
+
+
+
+### [*Visual Cinnamon*](https://www.visualcinnamon.com/){target="_blank"}
+
+Visual Cinnamon es la página personal de la diseñadora visual Nadieh Bremer. Se trata de una fuente de inspiración para cualquier persona interesada en la visualización de datos. Nadieh es conocida por su estilo único y su habilidad para combinar datos y diseño de una manera hermosa y efectiva. Su portafolio incluye visualizaciones de datos sobre temas como la música, la astronomía y la historia.
+
+Algunos ejemplos de su trabajo que me gustan particularmente:
+
+#### Patrimonio cultural intangible (UNESCO)
+
+Se trata de una visualización interactiva que muestra el patrimonio cultural intangible de la UNESCO. Incorpora diversos tipos de gráfico y nos permite sacar ideas de qué podemos hacer con diferentes tipos de dato.
+
+[![](figures/unesco.png)](https://ich.unesco.org/en/dive?display=constellation#tabs){target="_blank"}
+
+
+#### ¿Por qué los gatos y perros...? (Google)
+
+En esta visualización, Nadieh explora las preguntas más comunes sobre gatos y perros en Google. Nos recuerda la estructura jerárquica del lenguaje y cómo podemos representar las alternativas variantes de forma visualmente impactante y efectiva.
+
+[![](figures/cats_dogs.png)](https://whydocatsanddogs.com/){target="_blank"}
+
+

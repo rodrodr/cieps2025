@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ciencia de datos con R - Tiposde gráfico</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./gramatica.html">Manipulación y análisis</a></li><li class="breadcrumb-item"><a href="./tipos.html">Tipos de gráfico</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciencia de datos con R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción al curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./cdatos.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ciencia de datos políticos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recursos útiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos2.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Otra entrada</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./gramatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manipulación y análisis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tipos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tipos de gráfico</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Visualización</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recursos útiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gramatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gramática de los gráficos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tipos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tipos de gráfico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./personalizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apariencia y temas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interactivo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interactividad</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#tipos-de-dato-y-tipos-de-gráficos" id="toc-tipos-de-dato-y-tipos-de-gráficos" class="nav-link" data-scroll-target="#tipos-de-dato-y-tipos-de-gráficos">Tipos de dato y tipos de gráficos</a></li>
+  <li><a href="#distribución" id="toc-distribución" class="nav-link" data-scroll-target="#distribución">Distribución</a>
+  <ul class="collapse">
+  <li><a href="#gráficos-de-barras" id="toc-gráficos-de-barras" class="nav-link" data-scroll-target="#gráficos-de-barras">Gráficos de barras</a></li>
+  <li><a href="#histograma" id="toc-histograma" class="nav-link" data-scroll-target="#histograma">Histograma</a></li>
+  <li><a href="#densidad" id="toc-densidad" class="nav-link" data-scroll-target="#densidad">Densidad</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">Boxplot</a></li>
+  <li><a href="#violin-plot" id="toc-violin-plot" class="nav-link" data-scroll-target="#violin-plot">Violin plot</a></li>
+  <li><a href="#lollipop" id="toc-lollipop" class="nav-link" data-scroll-target="#lollipop">Lollipop</a></li>
+  <li><a href="#treemap" id="toc-treemap" class="nav-link" data-scroll-target="#treemap">Treemap</a></li>
+  <li><a href="#beeswarm" id="toc-beeswarm" class="nav-link" data-scroll-target="#beeswarm">BeeSwarm</a></li>
+  <li><a href="#ridge-plot" id="toc-ridge-plot" class="nav-link" data-scroll-target="#ridge-plot">Ridge Plot</a></li>
+  <li><a href="#raincloud-chart" id="toc-raincloud-chart" class="nav-link" data-scroll-target="#raincloud-chart">Raincloud Chart</a></li>
+  </ul></li>
+  <li><a href="#asociación-o-correlación" id="toc-asociación-o-correlación" class="nav-link" data-scroll-target="#asociación-o-correlación">Asociación o correlación</a>
+  <ul class="collapse">
+  <li><a href="#diagrama-de-dispersión" id="toc-diagrama-de-dispersión" class="nav-link" data-scroll-target="#diagrama-de-dispersión">Diagrama de dispersión</a></li>
+  <li><a href="#correlograma" id="toc-correlograma" class="nav-link" data-scroll-target="#correlograma">Correlograma</a></li>
+  </ul></li>
+  <li><a href="#conexión" id="toc-conexión" class="nav-link" data-scroll-target="#conexión">Conexión</a>
+  <ul class="collapse">
+  <li><a href="#red" id="toc-red" class="nav-link" data-scroll-target="#red">Red</a></li>
+  </ul></li>
+  <li><a href="#tiempo-flujo-evolución" id="toc-tiempo-flujo-evolución" class="nav-link" data-scroll-target="#tiempo-flujo-evolución">Tiempo / Flujo / Evolución</a>
+  <ul class="collapse">
+  <li><a href="#línea" id="toc-línea" class="nav-link" data-scroll-target="#línea">Línea</a></li>
+  <li><a href="#connected-scatterplot" id="toc-connected-scatterplot" class="nav-link" data-scroll-target="#connected-scatterplot">Connected scatterplot</a></li>
+  <li><a href="#area" id="toc-area" class="nav-link" data-scroll-target="#area">Area</a></li>
+  <li><a href="#dumbbell" id="toc-dumbbell" class="nav-link" data-scroll-target="#dumbbell">Dumbbell</a></li>
+  </ul></li>
+  <li><a href="#espacio" id="toc-espacio" class="nav-link" data-scroll-target="#espacio">Espacio</a>
+  <ul class="collapse">
+  <li><a href="#mapa-de-coropletas" id="toc-mapa-de-coropletas" class="nav-link" data-scroll-target="#mapa-de-coropletas">Mapa de coropletas</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><b>Tipos</b><br>de gráfico</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>En esta parte del curso examinaremos algunos de los tipos más comunes de gráfico. Los organizaremos según el tipo de análisis que se desea realizar con ellos. Por ejemplo, si queremos saber si una variable cuantitativa afecta otra igual, realizamos un gráfico de dispersión o un correlograma. si el objetivo es saber la frecuencia de una variable categórica, un gráfico de barras puede ser la mejor opción.</p>
+</section>
+<section id="tipos-de-dato-y-tipos-de-gráficos" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-dato-y-tipos-de-gráficos">Tipos de dato y tipos de gráficos</h2>
+<p>Cada tipo de gráfico suele corresponder a un tipo de dato o a una combinación entre tipos de dato. Por esa razón, resulta útil conocer la clasificación de los gráficos según los diferentes tipos de información para sacar los mejores resultados.</p>
+<p>La página <a href="https://www.data-to-viz.com/" target="_blank">from Data to Viz</a> resulta muy útil, pues ofrece una doble clasificación de los datos: por tipo de dato y el tipo de representación que se desea realizar. Recomiendo fuertemente que la estudiéis con detenimiento para tener una idea general de qué opciones tenéis. Luego, podréis regresar a la página para refrescar los conceptos y encontrar ejemplos, así como los códigos. Se trata de una herramienta muy útil a la hora de elegir el tipo de visualización que queremos para nuestros datos.</p>
+</section>
+<section id="distribución" class="level2">
+<h2 class="anchored" data-anchor-id="distribución">Distribución</h2>
+<p>Los gráficos de distribución son útiles para entender cómo se distribuyen los datos. ¿Cuál categoría es la más frecuente? ¿Los votos en un partido X en las mesas de Sevilla se encuentran concentrados alrededor de la media o varían mucho? Las visualizaciones de este apartado ayudan a responder a dichas preguntas. En este grupo se encuentran los histogramas, los gráficos de densidad, los diagramas de caja (<em>boxplots</em>) o los de violín (<em>violin</em>).</p>
+<section id="gráficos-de-barras" class="level3">
+<h3 class="anchored" data-anchor-id="gráficos-de-barras">Gráficos de barras</h3>
+<p>El gráfico de barras es uno de los más comunes y útiles. Se utiliza para representar la frecuencia de una variable categórica. Por ejemplo, si queremos saber cuántos votos ha obtenido cada partido en una elección, un gráfico de barras es la mejor opción. Esto nos permite comparar los valores y sacar conclusiones y patrones a partir de ellos.</p>
+<p>El código abajo crea un gráfico de barra para la variable <em>pot_policy</em> de la base de datos de los estados de EE. UU. La variable <em>pot_policy</em> representa la política relacionada a la legalización de la marijuana dominante en cada estado.</p>
+<p>Además, para no aburrirnos, también vamos a crear un gráfico de barras polar. Este tipo de gráfico es útil cuando queremos comparar la frecuencia de una variable categórica en un círculo. En este caso, la variable <em>pot_policy</em> se encuentra en el eje x y el eje y representa la frecuencia de cada categoría. Como veréis, se trata del mismo gráfico. Lo único que cambia es el sistema de coordenadas.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los datos</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(poliscidata)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea un data.frame d</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># con los datos de los estados</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> states</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># reordena de modo decreciente de </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># la frecuencia</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>pot_policy <span class="ot">&lt;-</span> <span class="fu">reorder</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                       d<span class="sc">$</span>pot_policy, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                       d<span class="sc">$</span>pot_policy, </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">function</span>(x) <span class="sc">-</span><span class="fu">length</span>(x))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Crea la capa de datos</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 ) Añade la capa de estética</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x=</span>pot_policy) </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Añade la capa de geometría</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_bar</span>()</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza el gráfico</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) Añade la capa de coordenadas </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (en este caso polares)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">coord_polar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="histograma" class="level3">
+<h3 class="anchored" data-anchor-id="histograma">Histograma</h3>
+<p>El histograma es una visualización muy útil para entender la distribución de una variable cuantitativa. Se divide en intervalos que contienen el número de observaciones (en nuestro caso estados) con valores entre los límites de cada uno de ellos.</p>
+<p>En el siguiente código, creamos un histograma para la variable <em>pop2010</em> de la base de datos de los estados de EE. UU. La variable <em>pop2010</em> representa la población de cada estado en el año 2010.</p>
+<div class="cell" data-exercise="true">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el histograma para pop2010</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(pop2010))<span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Adicional la geometría con 8 intervalos</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">8</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_hist-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Como podemos ver, el patrón común de los datos de población se revela: muchos estados con poca población y unos pocos con mucha. Ese comportamiento suele pasar también en municipios, países, etc.</p>
+</section>
+<section id="densidad" class="level3">
+<h3 class="anchored" data-anchor-id="densidad">Densidad</h3>
+<p>El gráfico de densidad es similar al histograma, pero en lugar de contar el número de observaciones en un intervalo, muestra una curva que representa la densidad de probabilidad de la variable. En otras palabras, el área bajo la curva es igual a 1.</p>
+<div class="cell" data-exercise="true">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico de densidad de pop2010</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(pop2010))<span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Adiciona la geometría de densidad</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_dens-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Como vemos, la curva de densidad nos muestra que la mayoría de los estados tienen una población baja, pero hay algunos con una población muy alta. Se trata de la misma información que en el histograma anterior, pero no hay cortes bruscos como los generados por los intervalos. Esa característica evita posibles distorsiones ocasionadas por la elección del número o del tamaño de los intervalos.</p>
+</section>
+<section id="boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
+<p>Otro gráfico de distribución muy útil es el <em>boxplot</em>. Este gráfico muestra la distribución de una variable cuantitativa a través de cinco estadísticas: el mínimo, el primer cuartil, la mediana, el tercer cuartil y el máximo. Además, también muestra los valores atípicos (<em>outliers</em>). Se emplea para analizar la dispersión y la simetría de los datos. Un diagrama donde las partes son simétricas y la caja resulta muy pequeña indica que los datos están muy concentrados alrededor de la mediana. Por otro lado, una caja grande y asimétrica indica que los datos están dispersos y que hay una mayor dispersión hacia los mayores o menores valores.</p>
+<p>El gráfico abajo crea un <em>boxplot</em> para la variable que mide el porcentaje de desempleo (<em>unemploy</em>) en cada estado. Para añadir valor, elegimos agrupar los estados por región para saber si existe algún patrón territorial en la distribución del paro en EE. UU.</p>
+<p>Los parámetros <em>fill</em> y <em>group</em> son necesarios para que el gráfico muestre una caja por cada región. En el primer caso, se atribuye un color a cada región y <em>group</em> se encarga de que cada región tenga su propia caja.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>unemploy, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y=</span>region,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill=</span>region,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">group=</span>region)) <span class="sc">+</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.1</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Vemos claramente dos patrones. De un lado, se encuentra el Oeste con estados con poco paro y otros con una tasa elevada. La dispersión resulta alta, tanto por los “bigotes” como por el tamaño de la caja. Además, los valores altos se encuentran más dispersos, pues la caja es más grande en la parte derecha. Por otro lado, el Noreste tiene una tasa de paro más concentrada, aunque la dispersión resulta mayor en la parte superior de la caja.</p>
+</section>
+<section id="violin-plot" class="level3">
+<h3 class="anchored" data-anchor-id="violin-plot">Violin plot</h3>
+<p>El <em>violin plot</em> es una combinación de un <em>boxplot</em> y un <em>density plot</em>. Muestra la distribución de una variable cuantitativa y la densidad de probabilidad de la misma. Es útil para comparar distribuciones entre diferentes grupos. En el siguiente gráfico, creamos un <em>violin plot</em> para la variable <em>unemploy</em> (tasa de paro) agrupada por región. Vemos que resulta muy parecido al <em>boxplot</em> anterior, pero con la ventaja de mostrar la densidad de probabilidad de la variable, es decir, dónde se concentran los valores. Aprovechamos para añadir los puntos de cada observación con <em>geom_jitter</em>. Así queda más fácil entender por qué el gráfico tiene la forma que tiene.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>unemploy, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y=</span>region,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">group=</span>region)) <span class="sc">+</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_violin</span>()<span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">color=</span>region))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="lollipop" class="level3">
+<h3 class="anchored" data-anchor-id="lollipop">Lollipop</h3>
+<p>El gráfico de <em>lollipop</em> es una variante del gráfico de barras. En lugar de barras, se utilizan segmentos de línea para representar las frecuencias de las categorías. Es útil cuando se quiere resaltar una categoría en particular. En el siguiente gráfico, creamos un <em>lollipop</em> para la variable <em>abort_rank3</em>, que representa la clasificación de los estados según su legislación sobre el aborto.</p>
+<p>Mientras que en los casos anteriores, cada gráfico tenía una sola geometría, en el <em>lollipop</em> se combinan dos: <em>geom_point</em> (punto) y <em>geom_segment</em> (segmento de línea). Esta estrategia resulta muy común en la creación de visualizaciones originales y personalizadas. Dominar la combinación entre geometrías puede ser muy útil para crear gráficos más complejos y atractivos.</p>
+<div class="cell" data-exercise="true">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea una tabla ordenada con los</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># valores de abort_rank3</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span>(d<span class="sc">$</span>abort_rank3))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># La convierte en base de datos</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># para la función ggplot</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(tb)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico de lollipop</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tb, </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">y=</span>Var1, </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">x=</span>Freq)) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Añade los puntos rojos</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span> </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Añade los segmentos</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>( <span class="fu">aes</span>(<span class="at">y=</span>Var1, </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yend=</span>Var1, </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>                    <span class="at">x=</span><span class="dv">0</span>, </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xend=</span>Freq))</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Dibuja el gráfico</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_lolli-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="treemap" class="level3">
+<h3 class="anchored" data-anchor-id="treemap">Treemap</h3>
+<p>Un <em>treemap</em> es un gráfico de proporciones representadas por áreas o rectángulos. Cuanto mayor sea el área, mayor será la frecuencia de una categoría dada (representada por un rectángulo). La principal ventaja de los <em>treemaps</em> es que permite representar datos jerárquicos. Por lo tanto, los grupos y subgrupos dentro de ellos pueden visualizarse fácilmente. Además, los <em>treemaps</em> permiten sintetizar muchos datos en un espacio relativamente pequeño.</p>
+<div class="cell" data-exercise="true">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga el paquete treemapify</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea una tabla ordenada con</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># las políticas de control de</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># la marijuana</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span>(d<span class="sc">$</span>pot_policy))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convierte en base de datos</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(tb)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el treemap usando la</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># geometría geom_treemap()</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># del paquete teemapify</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicialmente, define</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># el gráfico con el área, color</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># y etiqueta</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tb, </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">area =</span> Freq, </span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> Var1, </span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                <span class="at">label=</span>Var1)) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Añade la geometría de</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># treemap al gráfico</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>()</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza el resultado</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_tree-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="beeswarm" class="level3">
+<h3 class="anchored" data-anchor-id="beeswarm">BeeSwarm</h3>
+<p>El gráfico de <em>beeswarm</em> es una variante del <em>scatter plot</em> que permite visualizar la distribución de una variable cuantitativa en función de una variable categórica. Es útil para comparar la distribución de una variable cuantitativa entre diferentes grupos. En el siguiente gráfico, creamos un <em>beeswarm</em> para la variable <em>pop_65_older</em> (población de 65 años o más) agrupada por el nivel de democracia de los países. Además, añadimos el color según la religión de los países.</p>
+<p>Como vemos, también se parece mucho al <em>violin plot</em> anterior. Sin embargo, el <em>beeswarm</em> tiene la ventaja de mostrar cada observación individual, lo que puede ser útil para detectar patrones o valores atípicos. Además, resulta más atractivo visualmente, pues los puntos no se superponen y se distribuyen de forma más uniforme. En este caso, añadimos la religión como información adicional para intentar encontrar algún patrón en los datos.</p>
+<div class="cell" data-exercise="true" data-exercise.lines="25">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> world</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los paquetes necesarios</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)        </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)      </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico con el nivel de democracia</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># y la población de 65 años o más</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># con color según la religión</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> w,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>dem_level4, </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y=</span>pop_65_older, </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                          <span class="at">color=</span>religoin)) </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadimos la geometría: geom_quasirandom()</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_quasirandom</span>(<span class="at">size=</span><span class="fl">1.5</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizamos los resultados</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_bee-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Como vemos, las poblaciones de las democracias plenas presentan una mayor proporción de personas de 65 años o más. La autocracia, por otro lado, presenta una población más joven. Además, parece que la religión predominantes en los países con mayor proporción de personas de 65 años y más democráticos es el cristianismo, mientras que los más jóvenes y autoritarios son en su mayor parte de mayoría musulmana.</p>
+</section>
+<section id="ridge-plot" class="level3">
+<h3 class="anchored" data-anchor-id="ridge-plot">Ridge Plot</h3>
+<p>El gráfico de <em>ridge</em> es una variante del <em>density plot</em> que permite visualizar la distribución de una variable cuantitativa en función de una variable categórica. Es útil para comparar la distribución de una variable cuantitativa entre diferentes grupos. En el siguiente gráfico, creamos un <em>ridge</em> para la variable <em>frac_eth</em> (fracción de etnias) agrupada por la religión de los países.</p>
+<div class="cell" data-exercise="true">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los paquetes</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># con la relación entre </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># fraccionamiento étnico y religión</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(w,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x=</span>frac_eth, </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">y=</span>religoin, </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill=</span>religoin))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Añade la capa de geometría</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_density_ridges</span>()</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza los resultados</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_ridge-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Como vemos, la distribución de la fracción étnica varía según la religión predominante en los países. Los países con mayoría musulmana presentan una mayor fracción étnica, mientras que los países con mayoría católica presentan una menor fracción étnica. Además, los países con mayoría musulmana presentan una distribución más dispersa, mientras que los países con mayoría budista presentan una distribución más concentrada. La categoría “otros cristianos” presenta una distribución más dispersa, con dos picos.</p>
+</section>
+<section id="raincloud-chart" class="level3">
+<h3 class="anchored" data-anchor-id="raincloud-chart">Raincloud Chart</h3>
+<p>El gráfico de <em>raincloud</em> resulta muy divertido. Combina un <em>violin plot</em>, un <em>box plot</em> y un <em>scatter plot</em> en un solo gráfico. Se llama así, porque las curvas de densidad se asemejan a nubes y los puntos dispersos representados abajo parecen gotas de lluvia. Como en versiones anteriores que hemos elaborado más arriba, tenemos una representación sintética (una curva que describe la densidad o el comportamiento de los datos) y unos puntos que representa la posición aproximada de cada observación. En el siguiente gráfico, creamos un <em>raincloud</em> para la variable <em>pop_65_older</em> (población de 65 años o más) agrupada por el nivel de democracia de los países.</p>
+<div class="cell" data-exercise="true" data-exercise.lines="22">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los paquetes</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el gráfico, los datos son w, y las</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># variables: y=dem_level4 y x=pop_65_older,</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># el color es fill=dem_level4</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(w,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> dem_level4, </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> pop_65_older, </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> dem_level4)) </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Ahora adiciona la geometría, </span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># que incorpora los pujntos y</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># las líneas que identifica los</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># cuartiles</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>              <span class="at">jittered_points =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="st">"raincloud"</span>,</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha=</span><span class="fl">0.6</span>,                            </span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">quantile_lines =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza el resultado</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_rain-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="asociación-o-correlación" class="level2">
+<h2 class="anchored" data-anchor-id="asociación-o-correlación">Asociación o correlación</h2>
+<p>Los gráficos de asociación o correlación son útiles para visualizar la relación entre dos o más variables cuantitativas. Nos ayudan a identificar los vínculos entre fenómenos medidos de forma continua y formular hipótesis sobre su relación.</p>
+<section id="diagrama-de-dispersión" class="level3">
+<h3 class="anchored" data-anchor-id="diagrama-de-dispersión">Diagrama de dispersión</h3>
+<p>Un diagrama de dispersión o <em>scatterplot</em> es una de las formas más sencillas y efectivas de visualizar la relación entre dos variables cuantitativas. Cada punto en el gráfico representa una observación y su posición en los ejes x e y indica los valores de las dos variables. Resulta tan común que su interpretación es bastante intuitiva. Permite, además, que añadamos dos o tres variables más, como el color, el tamaño o la forma de los puntos, para representar información adicional.</p>
+<p>En el siguiente ejemplo, creamos un diagrama de dispersión para visualizar la relación entre la variable <em>hdi</em> (índice de desarrollo humano) y la variable <em>dem_score14</em> (puntuación de democracia). Además, coloreamos los puntos según la religión mayoritaria (<em>religoin</em>), cada continente (<em>regionun</em>) estará representado por una forma distinta y definiremos el tamaño empleando el porcentaje de personas con 65 años o más (<em>pop_65_older</em>).</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(w)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Capa estética con la religión</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># como color</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p<span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x=</span>hdi, </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">y=</span>dem_score14,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span>religoin,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">size=</span>pop_65_older,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">shape=</span>regionun)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Capa geométrica</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span><span class="fu">geom_point</span>()</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza el gráfico</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Tenemos un gráfico verdaderamente horrible. No obstante, solo quería demostraros que es posible añadir más de dos variables a un diagrama de dispersión. En este caso, tenemos cinco: desarrollo humano, democracia, continente, religión y porcentaje de personas mayores de 65 años. Aunque se pueda hacer, como habéis visto, ni siempre es recomendable o útil. En este caso, la visualización resulta confusa y poco informativa. Por tanto, es mejor limitar el número de variables a dos o tres para que el gráfico sea más fácil de interpretar:</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(w)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Capa estética con la religión</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># como color</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p<span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x=</span>hdi, </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">y=</span>dem_score14,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span>religoin)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Capa geométrica</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span><span class="fu">geom_point</span>()</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza el gráfico</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="correlograma" class="level3">
+<h3 class="anchored" data-anchor-id="correlograma">Correlograma</h3>
+<p>¿Qué pasa cuando queremos comparar el grado de asociación entre muchas variables cuantitativas de una sola vez? En este caso, el correlograma es una herramienta muy útil. Un correlograma es una matriz en la que cada celda representa el coeficiente de correlación entre dos variables. Los valores de la correlación pueden variar entre -1 y 1. Un valor de 1 indica una correlación positiva perfecta, un valor de -1 indica una correlación negativa perfecta y un valor de 0 indica que no hay correlación entre las variables. Los correlogramas son útiles para identificar patrones de correlación entre variables y seleccionar las variables más relevantes para un análisis más detallado.</p>
+<p>En el siguiente ejemplo, creamos un correlograma para visualizar la correlación entre las variables <em>gini10</em>, <em>dem_score14</em>, <em>literacy</em>, <em>lifeex_total</em>, <em>hdi</em>, <em>pop_urban</em>, <em>frac_eth</em> y <em>gdppcap08</em>.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga el paquete necesario</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea una lista de variables</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># de interés</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"gini10"</span>,<span class="st">"dem_score14"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">"literacy"</span>,<span class="st">"lifeex_total"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">"hdi"</span>,<span class="st">"pop_urban"</span>,<span class="st">"frac_eth"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>         <span class="st">"gdppcap08"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcula la matriz de correlación</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>corr <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(w[,var], </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">use=</span><span class="st">"pairwise.complete.obs"</span>), </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>              <span class="dv">3</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza los resultados</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(corr, </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">lab_size =</span> <span class="dv">3</span>,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.diag =</span> F,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">hc.order =</span> T,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">lab=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>El patrón que emerge resulta claro: el fraccionamiento étnico (<em>frac_eth</em>) y el índice de desigualdad de renta (<em>gini10</em>) están negativamente correlacionados con todas las demás variables (que presentan una asociación positiva). Es decir, la fraccionalización étnica y la desigualdad no “casan” muy bien con la riqueza (<em>gdppcap08</em>), la urbanización (<em>pop_urban</em>), el desarrollo humano (<em>hdi</em>), la esperanza de vida (<em>lifeex_total</em>), la alfabetización (<em>literacy</em>) o la democracia (<em>dem_score14</em>).</p>
+</section>
+</section>
+<section id="conexión" class="level2">
+<h2 class="anchored" data-anchor-id="conexión">Conexión</h2>
+<p>Los gráficos de conexión son útiles para visualizar datos de red. Nos permiten representar las relaciones entre diferentes entidades (nodos) y las interacciones entre ellas (vínculos). Los gráficos de conexión son útiles para visualizar flujos de información, rutas de transporte, relaciones comerciales, interpersonales, etc.</p>
+<section id="red" class="level3">
+<h3 class="anchored" data-anchor-id="red">Red</h3>
+<p>Un gráfico de red o <strong>sociograma</strong> es una representación visual de una red social. Se compone de dos unidades básicas: los nodos (o vértices) y los vínculos (o aristas). Los nodos son los puntos de la red y pueden representar a individuos, organizaciones, países, ciudades, etc. Los vínculos son las conexiones entre ellos y pueden señalar relaciones de amistad, colaboración, intercambio. Puede ser una red de ciudades, de empresas, de personas, de páginas web, entre muchos otras aplicaciones.</p>
+<p>En el siguiente ejemplo, creamos un gráfico de red para visualizar los flujos de visitas de la presidenta Dilma Rousseff entre diferentes ciudades de Brasil durante el mes anterior a las elecciónes presidenciales de 2014. La base de datos contiene información sobre el número de visitas entre diferentes ciudades, así como el número total de viajes realizados. Se ha obtenido a partir del análisis de los periódicos que cubrieron la campaña electoral.</p>
+<div class="cell" data-exercise="true" data-exercise.lines="32">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abre la base de datos</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>di <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/r8309gzg3rymajr/Visitas_Dilma_redux.csv?dl=1"</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sep=</span><span class="st">";"</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dec=</span><span class="st">","</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccoiona las variables</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>di <span class="ot">&lt;-</span> <span class="fu">unique</span>(di[,<span class="fu">c</span>(<span class="st">"NOM_O"</span>,<span class="st">"NOM_D"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"FREQ"</span>,<span class="st">"VISITS"</span>)])</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(di) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Origen"</span>,<span class="st">"Destino"</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Viajes"</span>,<span class="st">"Visitas"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los paquetes</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggnetwork)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convierte la base de datos</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># en un layout de red</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">ggnetwork</span>(di)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico con las</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># capas de datos y estética</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(n, </span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x, </span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> y, </span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> xend, </span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> yend))</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Añade la capa de vínculos (aristas)</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_edges</span>(</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>          <span class="fu">aes</span>(<span class="at">size=</span>Viajes),</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"red3"</span>, </span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>               <span class="at">alpha=</span><span class="fl">0.1</span>,           </span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>               <span class="at">curvature =</span> <span class="fl">0.25</span>)    </span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Ahora, añade los puntos (nodos)</span></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="co"># a la red anterior</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_nodes</span>(<span class="fu">aes</span>(<span class="at">size=</span>Visitas), </span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">"red3"</span>)</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Adiciona los nombres de las ciudades</span></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_nodetext_repel</span>(</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> vertex.names))</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Elimina el tema y la leyenda</span></span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme_blank</span>() <span class="sc">+</span></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>         <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza los resultados</span></span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/03_net-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Se observa que la candidata se desplaza principalmente entre las ciudades de São Paulo, Brasília, Río de Janeiro y Porto Alegre. Los constantes regresos a Brasília revelan la necesidad de conciliar las agendas de candidata con la de presidenta. Río y São Paulo, por su parte, son los principales centros económicos y políticos del país, mientras que Porto Alegre es la ciudad natal de la candidata. Vemos también que ha visitado otras ciudades, pero estas ocupan un lugar más periférico en la red.</p>
+</section>
+</section>
+<section id="tiempo-flujo-evolución" class="level2">
+<h2 class="anchored" data-anchor-id="tiempo-flujo-evolución">Tiempo / Flujo / Evolución</h2>
+<p>Los gráficos de tiempo o flujo son útiles para visualizar la evolución de una variable a lo largo del tiempo. Nos permiten identificar tendencias, patrones y ciclos en los datos. Entre las aplicaciones posibles encontramos las series temporales, flujos de información, movimientos de población, entre otros.</p>
+<p>Prepara la base de Brasil</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1985</span><span class="sc">:</span><span class="dv">2019</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Gini <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">55.6</span>,<span class="fl">58.5</span>,<span class="fl">59.7</span>,<span class="fl">61.4</span>,<span class="fl">63.3</span>,<span class="fl">60.5</span>,<span class="fl">60.3</span>,<span class="fl">60.2</span>,<span class="fl">60.1</span>,<span class="fl">59.9</span>,<span class="fl">59.6</span>,<span class="fl">59.9</span>,<span class="fl">59.8</span>,<span class="fl">59.6</span>,<span class="fl">59.0</span>,<span class="fl">58.7</span>,<span class="fl">58.4</span>,<span class="fl">58.1</span>,<span class="fl">57.6</span>,<span class="fl">56.5</span>,<span class="fl">56.3</span>,<span class="fl">55.6</span>,<span class="fl">54.9</span>,<span class="fl">54.0</span>,<span class="fl">53.7</span>,<span class="fl">53.3</span>,<span class="fl">52.9</span>,<span class="fl">53.4</span>,<span class="fl">52.7</span>,<span class="fl">52.0</span>,<span class="fl">51.9</span>,<span class="fl">53.3</span>,<span class="fl">53.3</span>,<span class="fl">53.9</span>,<span class="fl">53.5</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>Administration <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Sarney"</span>,<span class="st">"Sarney"</span>,<span class="st">"Sarney"</span>,<span class="st">"Sarney"</span>,<span class="st">"Sarney"</span>,<span class="st">"Collor"</span>,<span class="st">"Collor"</span>,<span class="st">"Collor"</span>,<span class="st">"Itamar"</span>,<span class="st">"Itamar"</span>,<span class="st">"FHC"</span>,<span class="st">"FHC"</span>,<span class="st">"FHC"</span>,<span class="st">"FHC"</span>,<span class="st">"FHC"</span>,<span class="st">"FHC"</span>,<span class="st">"FHC"</span>,<span class="st">"FHC"</span>,<span class="st">"Lula"</span>,<span class="st">"Lula"</span>,<span class="st">"Lula"</span>,<span class="st">"Lula"</span>,<span class="st">"Lula"</span>,<span class="st">"Lula"</span>,<span class="st">"Lula"</span>,<span class="st">"Lula"</span>,<span class="st">"Dilma"</span>,<span class="st">"Dilma"</span>,<span class="st">"Dilma"</span>,<span class="st">"Dilma"</span>,<span class="st">"Dilma"</span>,<span class="st">"Dilma"</span>,<span class="st">"Temer"</span>,<span class="st">"Temer"</span>,<span class="st">"Bolsonaro"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>Growth <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.9</span>,<span class="fl">7.5</span>,<span class="fl">3.5</span>,<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">3.2</span>,<span class="sc">-</span><span class="fl">4.4</span>,<span class="fl">1.0</span>,<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">4.9</span>,<span class="fl">5.9</span>,<span class="fl">4.2</span>,<span class="fl">2.2</span>,<span class="fl">3.4</span>,<span class="fl">0.3</span>,<span class="fl">0.5</span>,<span class="fl">4.4</span>,<span class="fl">1.4</span>,<span class="fl">3.1</span>,<span class="fl">1.1</span>,<span class="fl">5.8</span>,<span class="fl">3.2</span>,<span class="fl">4.0</span>,<span class="fl">6.1</span>,<span class="fl">5.1</span>,<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">7.5</span>,<span class="fl">4.0</span>,<span class="fl">1.9</span>,<span class="fl">3.0</span>,<span class="fl">0.5</span>,<span class="sc">-</span><span class="fl">3.5</span>,<span class="sc">-</span><span class="fl">3.3</span>,<span class="fl">1.3</span>,<span class="fl">1.8</span>,<span class="fl">1.2</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>GDP <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">836</span>,<span class="dv">898</span>,<span class="dv">930</span>,<span class="dv">930</span>,<span class="dv">959</span>,<span class="dv">917</span>,<span class="dv">927</span>,<span class="dv">922</span>,<span class="dv">967</span>,<span class="dv">1024</span>,<span class="dv">1067</span>,<span class="dv">1090</span>,<span class="dv">1127</span>,<span class="dv">1131</span>,<span class="dv">1137</span>,<span class="dv">1186</span>,<span class="dv">1203</span>,<span class="dv">1240</span>,<span class="dv">1254</span>,<span class="dv">1326</span>,<span class="dv">1368</span>,<span class="dv">1423</span>,<span class="dv">1509</span>,<span class="dv">1586</span>,<span class="dv">1584</span>,<span class="dv">1703</span>,<span class="dv">1771</span>,<span class="dv">1805</span>,<span class="dv">1859</span>,<span class="dv">1868</span>,<span class="dv">1802</span>,<span class="dv">1743</span>,<span class="dv">1766</span>,<span class="dv">1798</span>,<span class="dv">1820</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>br <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Year=</span>Year, </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">GDP=</span>GDP, </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Growth=</span>Growth, </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Gini=</span>Gini, </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Administration=</span>Administration)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>brs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(br)){</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i<span class="sc">&lt;</span><span class="fu">nrow</span>(br)){</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>{</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> i</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  brs <span class="ot">&lt;-</span> <span class="fu">rbind</span>(brs,</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>               <span class="fu">data.frame</span>(</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>                      <span class="at">x1=</span>br<span class="sc">$</span>Year[i],</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xend=</span>br<span class="sc">$</span>Year[k],</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y1=</span>br<span class="sc">$</span>Gini[i],</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>                      <span class="at">yend=</span>br<span class="sc">$</span>Gini[k],</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a> <span class="at">Administration=</span>br<span class="sc">$</span>Administration[i])</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>              )</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>brs2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(br)){</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i<span class="sc">&lt;</span><span class="fu">nrow</span>(br)){</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>{</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> i</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>  brs2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(brs2,</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>               <span class="fu">data.frame</span>(</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>                      <span class="at">x1=</span>br<span class="sc">$</span>GDP[i],</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xend=</span>br<span class="sc">$</span>GDP[k],</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y1=</span>br<span class="sc">$</span>Gini[i],</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>                      <span class="at">yend=</span>br<span class="sc">$</span>Gini[k],</span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a> <span class="at">Administration=</span>br<span class="sc">$</span>Administration[i],</span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Year=</span>Year[i])</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>              )</span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="línea" class="level3">
+<h3 class="anchored" data-anchor-id="línea">Línea</h3>
+<p>El gráfico de líneas es una de las formas más comunes de visualizar datos temporales. Se compone de dos ejes: el eje horizontal representa el tiempo y el eje vertical la variable de interés. Se utiliza para visualizar la evolución de una variable a lo largo del tiempo, identificar tendencias, patrones y ciclos.</p>
+<p>El código abajo muestra cómo crear un gráfico de líneas para visualizar la evolución del índice de desigualdad de renta en Brasil entre 1985 y 2019. La base de datos contiene información sobre el índice de Gini en Brasil, así como el año correspondiente. Se ha obtenido a partir de la base de datos del Banco Mundial.</p>
+<div class="cell" data-exercise="true">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepara el gráfico</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(br, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>Gini))<span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza los resultados</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_line-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="connected-scatterplot" class="level3">
+<h3 class="anchored" data-anchor-id="connected-scatterplot">Connected scatterplot</h3>
+<p>El gráfico de dispersión conectado es una variante del gráfico de líneas que permite visualizar la relación entre dos variables a lo largo del tiempo. Se trata de conectar los puntos por medio de segmentos de línea para resaltar la evolución de la variable en el tiempo. El gráfico abajo muestra la evolución de la desigualdad en Brasil entre 1985 y 2019, pero ahora, marca los cambios de gobierno en el país.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los paquetes</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(brs, </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x=</span>Year, </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">y=</span>Gini,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill=</span>Administration))</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Añade segmentos de línea para</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># cada gobierno</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_segment</span>(</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">aes</span>(<span class="at">x=</span>x1,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>                          <span class="at">xend=</span>xend,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y=</span>y1,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>                          <span class="at">yend=</span>yend,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>                          <span class="at">color=</span>Administration))</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza los resultados</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/03_line-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="area" class="level3">
+<h3 class="anchored" data-anchor-id="area">Area</h3>
+<p>El gráfico de área es una variante del gráfico de líneas que rellena el área entre la línea y el eje horizontal. El cambio puede parecer insignificante, pero posibilita la percepción de cambios importantes en volúmenes. En el ejemplo abajo, se muestra la evolución del crecimiento económico en Brasil entre 1985 y 2019.</p>
+<div class="cell" data-exercise="true">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los paquetes</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepara el gráfico</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(br, </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">y=</span>Growth, </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">x=</span>Year))<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_area</span>(<span class="at">fill=</span><span class="st">"darkgreen"</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza los resultados</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_area-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="dumbbell" class="level3">
+<h3 class="anchored" data-anchor-id="dumbbell">Dumbbell</h3>
+<p>El gráfico de pesas rusas (<em>dumbbell</em>) es una variante del gráfico de líneas que permite visualizar la evolución de dos variables a lo largo del tiempo. Se compone de dos o más puntos conectados por un segmento de línea. Es útil para comparar dos valores en diferentes momentos y visualizar la evolución de la variable en el tiempo. El gráfico abajo muestra la evolución de la proporción de la riqueza concentrada por el 10% más rico de en los países de América Latina en 2000, 2010 y 2019.</p>
+<p>Primero, prepara los datos:</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vdemdata)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>dem<span class="ot">&lt;-</span> vdem</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> dem[,<span class="fu">c</span>(<span class="st">"country_name"</span>,<span class="st">"year"</span>,<span class="st">"v2x_polyarchy"</span>,<span class="st">"v2x_libdem"</span>,<span class="st">"v2x_partipdem"</span>,<span class="st">"v2x_delibdem"</span>,<span class="st">"v2x_egaldem"</span>)]</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dm) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Country"</span>,<span class="st">"Year"</span>,<span class="st">"Electoral"</span>,<span class="st">"Liberal"</span>,<span class="st">"Participative"</span>,<span class="st">"Deliberative"</span>,<span class="st">"Egalitarian"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>co <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Argentina"</span>,<span class="st">"Bolivia"</span>,<span class="st">"Brazil"</span>,<span class="st">"Chile"</span>,<span class="st">"Colombia"</span>,<span class="st">"Costa Rica"</span>,<span class="st">"Dominican Republic"</span>,<span class="st">"Ecuador"</span>,<span class="st">"Honduras"</span>,<span class="st">"Mexico"</span>,<span class="st">"Panama"</span>,<span class="st">"Peru"</span>,<span class="st">"Paraguay"</span>,<span class="st">"El Salvador"</span>,<span class="st">"Uruguay"</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>dml <span class="ot">&lt;-</span> dm[dm<span class="sc">$</span>Country<span class="sc">%in%</span><span class="fu">c</span>(co,<span class="st">"Nicaragua"</span>,<span class="st">"Venezuela"</span>),]</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>ye <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">2000</span>,<span class="fu">length</span>(co)),<span class="fu">rep</span>(<span class="dv">2010</span>,<span class="fu">length</span>(co)),</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rep</span>(<span class="dv">2020</span>,<span class="fu">length</span>(co)))</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>top <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">37.7</span>,<span class="fl">47.8</span>,<span class="dv">47</span>,<span class="fl">42.6</span>,<span class="dv">47</span>,<span class="fl">35.7</span>,<span class="fl">40.2</span>,<span class="fl">45.9</span>,<span class="fl">41.9</span>,<span class="dv">42</span>,<span class="fl">43.2</span>,<span class="fl">36.8</span>,<span class="fl">42.1</span>,<span class="dv">39</span>,<span class="fl">35.4</span>,<span class="fl">31.7</span>,<span class="fl">36.9</span>,<span class="fl">42.2</span>,<span class="fl">38.2</span>,<span class="fl">43.4</span>,<span class="fl">36.8</span>,<span class="fl">36.5</span>,<span class="fl">37.5</span>,<span class="fl">40.2</span>,<span class="fl">37.1</span>,<span class="fl">39.7</span>,<span class="fl">34.2</span>,<span class="fl">40.5</span>,<span class="fl">33.2</span>,<span class="fl">33.6</span>,<span class="fl">30.3</span>,<span class="fl">32.6</span>,<span class="fl">39.4</span>,<span class="fl">35.8</span>,<span class="fl">42.2</span>,<span class="dv">37</span>,<span class="fl">30.5</span>,<span class="dv">36</span>,<span class="fl">34.6</span>,<span class="fl">35.5</span>,<span class="dv">38</span>,<span class="fl">32.9</span>,<span class="fl">33.3</span>,<span class="fl">29.8</span>,<span class="fl">29.9</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>lat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Country=</span><span class="fu">c</span>(co,co,co), <span class="at">Year=</span><span class="fu">as.character</span>(ye), <span class="at">Share=</span>top)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Luego, el gráfico:</p>
+<div class="cell" data-exercise="true" data-exercise.lines="47">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los paquetes</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtiene el orden de los países según</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># la proporción de riqueza apropiada por</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># los 10% más ricos (de los más a los menos).</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>levels <span class="ot">&lt;-</span> lat[</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">order</span>(</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                lat<span class="sc">$</span>Share[lat<span class="sc">$</span>Year<span class="sc">==</span><span class="dv">2000</span>], </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">decreasing =</span> T),</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>              <span class="fu">c</span>(<span class="st">"Country"</span>)]</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Reordena la base de datos según los niveles</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co"># obtenidos en 2000 (esto es importante para que el </span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co"># gráfico salga bonito y fácil de interpretar)</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>lat<span class="sc">$</span>Country <span class="ot">&lt;-</span> <span class="fu">factor</span>(lat<span class="sc">$</span>Country, </span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels=</span>levels)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Genera el gráfico</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(lat,</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">y=</span>Country, </span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>                <span class="at">x=</span>Share))</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Adiciona los segmentos de línea</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="co"># conectando cada período</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">"grey85"</span>)</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Añade puntos y los colorea de</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="co"># acuerdo al año (Year)</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>Year))</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza los resultados</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/01_dumb-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Se observa que la mayoría de los países han experimentado una reducción en la concentración de la riqueza en manos del 10% más rico, con excepción de Costa Rica, que ha experimentado un aumento en el mismo período. Resulta notable el caso de Bolivia, que ha experimentado una reducción significativa en la concentración de la riqueza en manos del 10% más rico en el período analizado, que pasa de ser el país más desigual al quinto menos desigual en la región en 2020.</p>
+</section>
+</section>
+<section id="espacio" class="level2">
+<h2 class="anchored" data-anchor-id="espacio">Espacio</h2>
+<p>Los gráficos espaciales son útiles para visualizar la distribución geográfica de una variable. Nos permiten identificar patrones, tendencias y relaciones espaciales en los datos. Entre las aplicaciones posibles encontramos la distribución de la población, la concentración de la riqueza, la distribución de la pobreza, entre otros.</p>
+<section id="mapa-de-coropletas" class="level3">
+<h3 class="anchored" data-anchor-id="mapa-de-coropletas">Mapa de coropletas</h3>
+<p>Un mapa de coropletas es una forma de visualización espacial que consiste en colorear áreas geográficas de acuerdo a una variable de interés. Es útil para visualizar la distribución geográfica de una variable y compararla entre diferentes áreas. En el ejemplo abajo, se muestra la distribución de los condados de Carolina del Norte según su área. Los condados más grandes se muestran en tonos más oscuros, mientras que los más pequeños aparecen más claros.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los paquetes</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga los datos de</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># los condados de Carolina </span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># del Norte</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>nc <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">"shape/nc.shp"</span>, </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                          <span class="at">package =</span> <span class="st">"sf"</span>), </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea el gráfico y lo colorea</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># según el área</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(nc) <span class="sc">+</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> AREA))</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza los resultados  </span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>gg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="tipos_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2025, Rodrigo Rodrigues-Silveira</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

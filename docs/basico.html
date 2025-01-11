@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ciencia de datos con R - Fundamentosde visualización de datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/d3-bundle-5.16.0/d3-bundle.min.js"></script>
+<script src="site_libs/d3-lasso-0.0.5/d3-lasso.min.js"></script>
+<script src="site_libs/save-svg-as-png-1.4.17/save-svg-as-png.min.js"></script>
+<script src="site_libs/flatbush-4.4.0/flatbush.min.js"></script>
+<link href="site_libs/ggiraphjs-0.8.10/ggiraphjs.min.css" rel="stylesheet">
+<script src="site_libs/ggiraphjs-0.8.10/ggiraphjs.min.js"></script>
+<script src="site_libs/girafe-binding-0.8.10/girafe.js"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./basico.html">Visualización</a></li><li class="breadcrumb-item"><a href="./basico.html">Fundamentos</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciencia de datos con R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción al curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./cdatos.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ciencia de datos políticos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recursos útiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos2.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Otra entrada</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./gramatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manipulación y análisis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tipos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tipos de gráfico</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Visualización</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basico.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Fundamentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recursos útiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gramatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gramática de los gráficos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tipos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tipos de gráfico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./personalizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apariencia y temas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interactivo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interactividad</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#por-qué-visualizar-datos" id="toc-por-qué-visualizar-datos" class="nav-link active" data-scroll-target="#por-qué-visualizar-datos">¿Por qué visualizar datos?</a></li>
+  <li><a href="#qué-es-la-visualización-de-datos" id="toc-qué-es-la-visualización-de-datos" class="nav-link" data-scroll-target="#qué-es-la-visualización-de-datos">¿Qué es la visualización de datos?</a></li>
+  <li><a href="#por-qué-es-importante-la-visualización-de-datos" id="toc-por-qué-es-importante-la-visualización-de-datos" class="nav-link" data-scroll-target="#por-qué-es-importante-la-visualización-de-datos">¿Por qué es importante la visualización de datos?</a></li>
+  <li><a href="#reglas-básicas" id="toc-reglas-básicas" class="nav-link" data-scroll-target="#reglas-básicas">Reglas básicas</a>
+  <ul class="collapse">
+  <li><a href="#tenga-una-historia-que-contar-o-buscar" id="toc-tenga-una-historia-que-contar-o-buscar" class="nav-link" data-scroll-target="#tenga-una-historia-que-contar-o-buscar">Tenga una historia que contar o buscar</a></li>
+  <li><a href="#que-tus-datos-sean-de-calidad" id="toc-que-tus-datos-sean-de-calidad" class="nav-link" data-scroll-target="#que-tus-datos-sean-de-calidad">Que tus datos sean de calidad</a></li>
+  <li><a href="#esto-son-gráficos-no-pinturas-rococó-señores" id="toc-esto-son-gráficos-no-pinturas-rococó-señores" class="nav-link" data-scroll-target="#esto-son-gráficos-no-pinturas-rococó-señores">¡Esto son gráficos, no pinturas Rococó, señores!</a></li>
+  <li><a href="#huye-de-las-plantillas-de-excel-spss-stata-o-r" id="toc-huye-de-las-plantillas-de-excel-spss-stata-o-r" class="nav-link" data-scroll-target="#huye-de-las-plantillas-de-excel-spss-stata-o-r">Huye de las plantillas de Excel, SPSS, Stata o R</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><b>Fundamentos</b><br>de visualización de datos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="por-qué-visualizar-datos" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-visualizar-datos">¿Por qué visualizar datos?</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/xekEXM0Vonc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>El documental de PBS “El arte de la visualización de datos” resulta muy informativo sobre la importancia de la visualización de datos:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/AdSZJzb-aX8" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><br></p>
+<p>Todos los días vemos cómo se manipula la información para intentar convencer a la gente. Los gráficos no se quedan fuera de esa tendencia. El corto video abajo nos muestra algunas de las estrategias más comunes para descubrir intentos de mentir con gráficos:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/E91bGT9BjYk" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="qué-es-la-visualización-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-la-visualización-de-datos">¿Qué es la visualización de datos?</h2>
+<p>La visualización de datos es una forma de comunicar información de manera efectiva utilizando elementos visuales como gráficos, mapas y tablas. Se trata de una parte esencial del trabajo científico, puesto que representa tanto una herramienta de análisis como un instrumento de comunicación de los resultados.</p>
+<p>Dentro de los ámbitos científicos, los gráficos se consideran como parte del proceso de exploración de datos. Resultan muy útiles para descubrir patrones, validar la calidad de los datos y entender procesos que serían más difíciles de entender si se presentaran en forma de tablas o texto.</p>
+<p>Más recientemente, su uso se ha extendido a la comunicación de resultados y a la divulgación científica, ya que permiten presentar de manera clara y efectiva los hallazgos de un análisis de datos tanto a expertos como a un público no especializado.</p>
+</section>
+<section id="por-qué-es-importante-la-visualización-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-es-importante-la-visualización-de-datos">¿Por qué es importante la visualización de datos?</h2>
+<p>Tomemos como ejemplo, el gráfico “Warming Stripes”, creado por Edward Hakwings en 2018 para representar los cambios en las temperaturas medias anuales entre 1850 y 2017.</p>
+<p><img src="figures/stripes.png" class="img-fluid"> <br></p>
+<p>Este gráfico se ha convertido en un símbolo de la lucha contra el cambio climático y ha sido utilizado por organizaciones como la ONU y la NASA para concienciar sobre el problema. ¿Por qué? Examinemos algunos elementos que hacen este gráfico tan efectivo:</p>
+<ol type="a">
+<li><p><strong>Simplicidad</strong>: El gráfico es simple y fácil de entender. No hay elementos de distracción, comentarios o decoraciones indeseadas, ni siquiera hace falta una escala informando qué se mide. Por solo mirarlo, ya nos damos cuenta de que se trata de una secuencia lineal de temperatura. Aquí, la regla de “menos es más” se afirma con mucha potencia.</p></li>
+<li><p><strong>El uso del color</strong>: El uso del color es muy efectivo. El color azul representa temperaturas más bajas, mientras que el rojo representa temperaturas más altas. La elección de estos colores es muy acertada, ya que el azul y el rojo son colores que se asocian comúnmente con el frío y el calor. Por lo tanto, no hace falta una leyenda para explicar qué representa cada barra.</p></li>
+<li><p><strong>El uso de la escala</strong>: Por tratarse de cambios (y no de valores absolutos), la variación entre las observaciones aumenta, lo que facilita la visualización de un patrón claro e inequívoco de calentamiento global.</p></li>
+</ol>
+<p>En resumen, aunque siempre haya habido grupos contrarios a la tesis del calentamiento global, a partir de la creación de esta visualización, cualquiera que quiera argumentar en contra tendrá mucha mayor dificultad en hacerlo y necesitará argumentos muy convincentes para disuadir a la gente.</p>
+<p>Teniendo en mente el ejemplo anterior, podemos decir que la visualización de datos es importante por varias razones:</p>
+<ol type="1">
+<li><p><strong>Facilita la comprensión de los datos</strong>: Los gráficos y las visualizaciones permiten comprender mejor los datos y descubrir patrones y relaciones que serían difíciles de detectar de otra manera. Es cada vez más común trabajar con una cantidad enorme de datos que serían inabarcables sin estrategias heurísticas que posibilitaran su síntesis de manera efectiva. Los gráficos son una de las formas de abstracción más poderosas. Vemos que se trata de un gráfico muy fácil de leer.</p></li>
+<li><p><strong>Facilita la comunicación de resultados</strong>: Los gráficos y las visualizaciones permiten comunicar de manera clara los resultados de un análisis de datos a expertos y a un público no especializado. No hace falta ser un experto en climatología para entender que las barras rojas son cada vez más largas y que eso significa que las temperaturas están aumentando. Personas con muy distintos niveles educativos pueden entender el mensaje.</p></li>
+<li><p><strong>Facilita la toma de decisiones</strong>: Los gráficos y las visualizaciones permiten tomar decisiones informadas basadas en datos y evidencia. El gráfico de las barras de temperatura deja claro que tenemos un problema y que hace falta tomar cartas en el asunto, pues el crecimiento parece ser exponencial.</p></li>
+<li><p><strong>Facilita la identificación de problemas</strong>: Los gráficos y las visualizaciones permiten identificar problemas y errores en los datos, como valores atípicos y datos faltantes.</p></li>
+<li><p><strong>Facilita la identificación de oportunidades</strong>: Los gráficos y las visualizaciones permiten identificar oportunidades y tendencias que pueden ser aprovechadas para mejorar los procesos y los resultados.</p></li>
+</ol>
+<p><br></p>
+<p>Por lo tanto, no hace falta tener un super gráfico lleno de parafernalia y “cachibaches” para comunicar efectivamente un mensaje. La simplicidad y la claridad son las claves para una visualización efectiva.</p>
+</section>
+<section id="reglas-básicas" class="level2">
+<h2 class="anchored" data-anchor-id="reglas-básicas">Reglas básicas</h2>
+<p>Existe un conjunto de reglas básicas que nos ayudan a la hora de crear visualizaciones de alta calidad. Si uno se adhiere a estos principios básicos, es mucho más probable que sea capaz de comunicar de manera efectiva la información que se desea transmitir.</p>
+<section id="tenga-una-historia-que-contar-o-buscar" class="level3">
+<h3 class="anchored" data-anchor-id="tenga-una-historia-que-contar-o-buscar">Tenga una historia que contar o buscar</h3>
+<p>Ya sé que parece discurso de vendedor de autos usados o de conferenciante de las charlas <strong>TED</strong>, pero es cierto. ¿Por qué el gráfico es importante? ¿Qué pretende descubrir o revelar? No es necesario que sea una historia compleja o sumamente elaborada, sino que sea clara, fácil de entender y, sobre todo, que importe a la gente. Y para que importe a la gente, debes saber a qué gente te diriges, aunque, a veces, uno termina sorprendiéndose de la diversidad de personas que se interesan por un tema.</p>
+<p>En 2018, terminadas las elecciones presidenciales de Brasil en las que ganó Jair Bolsonaro, empezó una discusión en los medios y las redes sociales sobre cuál habría sido el apoyo efectivo del tercer candidato en la disputa, Ciro Gomes, al candidato del Partido de los Trabajadores (PT), Fernando Haddad, en la segunda vuelta de los comicios. Muchos apoyadores del PT decían que Ciro Gomes había sido el responsable de la derrota de Haddad, mientras que otros decían que no había sido así. Entonces, he decidido aplicar una técnica de inferencia ecológica, que intenta descubrir patrones a partir de datos agregados, para ver si podía descubrir algo.</p>
+<p>Para casa mesa, he calculado la cantidad de votos que se habrían transferidos de unos a otros. Con esas informaciones, podía estimar cuál proporción de votos de cada candidato se transfería a otros, los blancos y nulos y las abstenciones. Con esos datos, he creado el siguiente gráfico cordas que revela la transferencia estimada de votos entre candidatos:</p>
+<p><img src="figures/votos_ciro.jpg" class="img-fluid"></p>
+<p>En la izquierda del gráfico vemos la red completa de transferencias, con los candidatos derrotados en la primera vuelta en la izquierda y las opciones de voto en la segunda vuelta a la derecha. En la derecha de la imagen, vemos la transferencia de cada candidato por separado. He decidido separar cada uno de ellos para facilitar la visualización de los patrones.</p>
+<p>Vemos que las secciones electorales que votaron en mayor medida a Ciro Gomes han sido las únicas que inequívocamente han transferido votos a Fernando Haddad. Los patrones de los demás candidatos favorecen a Bolsonaro o son más complejos, sin una preferencia clara.</p>
+<p>Aunque se tratara de una publicación privada en facebook, destinada solamente a mis amigos politólogos, en poco tiempo el gráfico se ha vuelto viral (infelizmente, sin la explicación metodológica que lo acompañaba). Muchos de los apoyadores de Ciro lo compartían y comentaban para contrarrestar las acusaciones de los del PT de que los “ciristas” habían votado nulo o apoyado a Bolsonaro. Este impacto inesperado solo fue posible porque el gráfico tenía una historia que contar y que importaba a la gente.</p>
+</section>
+<section id="que-tus-datos-sean-de-calidad" class="level3">
+<h3 class="anchored" data-anchor-id="que-tus-datos-sean-de-calidad">Que tus datos sean de calidad</h3>
+<p>En la comunidad de análisis de datos en inglés, se suele emplear una expresión que me parece excelente para entender los problemas y virtudes de cualquier investigación o gráfico: “garbage in, garbage out” (algo en español como “aunque la mona se vista de seda, mona se queda” o <em>quod natura non dat, Salmantica non praestat</em>). Es decir, si no eres Moisés, no puedes sacar agua de piedra. Creo que las referencias populares nos quieren decir es: un análisis basado en datos de mala calidad no puede aportar nada de interesante. No resulta casual que la mayor parte del trabajo de investigación se dedique a la recolección y limpieza de datos y en las revisiones por pares se hace hincapié en la consistencia de los aspectos metodológicos. Tienen que ser <strong>interesantes</strong> y <strong>confiables</strong> para ser válidos.</p>
+</section>
+<section id="esto-son-gráficos-no-pinturas-rococó-señores" class="level3">
+<h3 class="anchored" data-anchor-id="esto-son-gráficos-no-pinturas-rococó-señores">¡Esto son gráficos, no pinturas Rococó, señores!</h3>
+<p>A mí, personalmente, me gusta el Rococó. Esos palacios decorados, esas pinturas de Fragonard o Watteau, todo muy bonito, un lujazo manifiesto en colores y formas. No obstante, un gráfico (al menos en un principio) no debería ser algo que recargue los sentidos. Obviamente, hay controversias y algunos diseñadores defienden la idea de que un gráfico es una forma de expresión visual más y, por lo tanto, puede asumir cualquier estilo estético que se desee.</p>
+<p>No obstante, si queremos comunicar de forma rápida y efectiva a un público que no tiene tiempo ni busca una contemplación estética en nuestros gráficos, lo mejor es mantenerlos simples y claros. No es necesario que sean aburridos, pero sí que sean efectivos.</p>
+<p>¿Qué quiero decir simples y claros? Primero, que no se debe abusar de los colores, las formas y los elementos decorativos. Un gráfico debe ser fácil de leer y de entender. Si el lector tiene que esforzarse para entender lo que se quiere comunicar, es probable que no lo haga. Llenar los gráficos de elementos visuales vacíos de significado (para evitar el <em>horror vacui</em>) resultaría contraproducente. Eso no quiere decir que no se puedan emplear elementos estéticos para facilitar el entendimiento y causar una impresión placentera en los lectores. Como dijo Edward Tufte en el documental de la PBS, “el contenido siempre viene primero, la belleza naturalmente le seguirá”.</p>
+</section>
+<section id="huye-de-las-plantillas-de-excel-spss-stata-o-r" class="level3">
+<h3 class="anchored" data-anchor-id="huye-de-las-plantillas-de-excel-spss-stata-o-r">Huye de las plantillas de Excel, SPSS, Stata o R</h3>
+<p>¡Pero, tampoco nos pasemos de dejados! Si examinamos una muestra de publicaciones científicas en las ciencias sociales resulta impresionante ver el poco cuidado estético que se tiene con los gráficos. Aunque no es necesario que sean obras de arte, sí es importante que sean fáciles de leer y que aprovechen para informar lo mejor posible. No es necesario que sean muy elaborados, pero sí que sean claros, efectivos y <strong>atractivos</strong>.</p>
+<p>En la mayoría de los casos, los autores simplemente copian y pegan los resultados de Excel, SPSS o Stata (incluso R) en sus documentos sin preocuparse por cómo el perfeccionamento de elementos visuales como el color, el tipo de fuente o la disposición de los símbolos puede mejorar la comprensión de los datos. Un gráfico atractivo, además de limpio y efectivo, resulta agradable y llama la atención por el placer estético que produce en el observador. También es una forma de demostrar cierto estilo o sofisticación en el trabajo de un autor. Es como su “marca” personal. Es la impresión que suelo tener cuando veo un gráfico de diseñadoras como <a href="https://www.behance.net/FedericaFragapane">Federica Fragapane</a>, <a href="https://giorgialupi.com/">Giorgia Lupi</a> o <a href="https://www.visualcinnamon.com/">Nadieh Bremer</a>.</p>
+<p>Atraer la atención del lector no es cosa menor. Tenemos a nuestra disposición miles de artículos y libros para leer, y si no logramos captar la atención del lector, es probable que nuestro trabajo no sea leído. Gráficos bien acabados revelan atención al detalle y preocupación por la calidad del trabajo que se lleva a cabo. Utilizando una analogía con la moda, sería como hacer una “operación bikini” y luego ir a la playa en chándal de andar por casa.</p>
+<p>No digo que te conviertas en un diseñador para hacer un gráfico atractivo, pero sí es necesario tener en cuenta algunos principios básicos de diseño y visualización de datos. Existe una infinitud de manuales de visualización de datos con capítulos específicos sobre la elección de colores, fuentes, tamaños, formas, etc. Mi sugerencia es que consultéis algunas de esas obras para aprender los principios básicos, valerá mucho la pena <span class="citation" data-cites="brewer2005 healy2019 brewer2003 yau2011 yau2013 tufte2001 cleveland1993 munzner2014 few2004">(<a href="#ref-brewer2005" role="doc-biblioref">Brewer 2005</a>; <a href="#ref-healy2019" role="doc-biblioref">Healy 2019</a>; <a href="#ref-brewer2003" role="doc-biblioref">Brewer, Hatchard, and Harrower 2003</a>; <a href="#ref-yau2011" role="doc-biblioref">Yau 2011</a>, <a href="#ref-yau2013" role="doc-biblioref">2013</a>; <a href="#ref-tufte2001" role="doc-biblioref">Tufte 2001</a>; <a href="#ref-cleveland1993" role="doc-biblioref">Cleveland 1993</a>; <a href="#ref-munzner2014" role="doc-biblioref">Munzner 2014</a>; <a href="#ref-few2004" role="doc-biblioref">Few 2004</a>)</span>. Veréis que a partir de cierto momento se empiezan a repetir los mismos consejos y recomendaciones. En ese instante, ya tendrás lo suficiente para aplicar en tus propios gráficos.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="basico_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="1344"></p>
+</div>
+<div class="cell-output-display">
+<div class="girafe html-widget html-fill-item" id="htmlwidget-cf4a4a7053a0835eaea6" style="width:100%;height:390px;"></div>
+<script type="application/json" data-for="htmlwidget-cf4a4a7053a0835eaea6">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='graphics-document' id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe' viewBox='0 0 576 432'>\n <defs id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_defs'>\n  <clipPath id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_c1'>\n   <rect x='0' y='0' width='576' height='432'/>\n  <\/clipPath>\n  <clipPath id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_c2'>\n   <rect x='35.71' y='39.93' width='534.81' height='307.4'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_619a8856_5d2c_4fca_990c_cfa849f230fe_c1)'>\n   <rect x='0' y='0' width='576' height='432' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='-0' y='0' width='576' height='432' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_619a8856_5d2c_4fca_990c_cfa849f230fe_c2)'>\n   <rect x='35.71' y='39.93' width='534.81' height='307.4' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e1' cx='152.86' cy='76.95' r='2.51pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Afghanistan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.8&amp;lt;br&amp;gt;Desig. género: 0.8&amp;lt;br&amp;gt;Urbanización: 22.6&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e2' cx='312.18' cy='180.67' r='3.78pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Albania&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.7&amp;lt;br&amp;gt;Desig. género: 0.54&amp;lt;br&amp;gt;Urbanización: 51.9&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e3' cx='211.09' cy='160.5' r='4.23pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Algeria&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.8&amp;lt;br&amp;gt;Desig. género: 0.59&amp;lt;br&amp;gt;Urbanización: 66.5&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e4' cx='376.46' cy='185.19' r='4.89pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Argentina&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.8&amp;lt;br&amp;gt;Desig. género: 0.53&amp;lt;br&amp;gt;Urbanización: 92.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e5' cx='227.58' cy='170.38' r='4.16pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Armenia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4.1&amp;lt;br&amp;gt;Desig. género: 0.57&amp;lt;br&amp;gt;Urbanización: 64.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e6' cx='495.67' cy='283.15' r='4.81pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Australia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9&amp;lt;br&amp;gt;Desig. género: 0.3&amp;lt;br&amp;gt;Urbanización: 89.1&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e7' cx='469.85' cy='281.5' r='4.26pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Austria&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.5&amp;lt;br&amp;gt;Desig. género: 0.3&amp;lt;br&amp;gt;Urbanización: 67.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e8' cx='156.16' cy='177.37' r='3.78pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Azerbaijan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.8&amp;lt;br&amp;gt;Desig. género: 0.55&amp;lt;br&amp;gt;Urbanización: 51.9&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e9' cx='158.36' cy='194.25' r='4.8pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Bahrain&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.9&amp;lt;br&amp;gt;Desig. género: 0.51&amp;lt;br&amp;gt;Urbanización: 88.6&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e10' cx='318.22' cy='102.88' r='2.82pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Bangladesh&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.8&amp;lt;br&amp;gt;Desig. género: 0.73&amp;lt;br&amp;gt;Urbanización: 28.1&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e11' cx='436.34' cy='307.84' r='5.01pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Belgium&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.9&amp;lt;br&amp;gt;Desig. género: 0.24&amp;lt;br&amp;gt;Urbanización: 97.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e12' cx='311.08' cy='92.59' r='3.43pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Benin&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.7&amp;lt;br&amp;gt;Desig. género: 0.76&amp;lt;br&amp;gt;Urbanización: 42&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e13' cx='318.77' cy='128.4' r='4.23pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Bolivia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.8&amp;lt;br&amp;gt;Desig. género: 0.67&amp;lt;br&amp;gt;Urbanización: 66.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e14' cx='433.04' cy='132.1' r='4.07pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Botswana&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.9&amp;lt;br&amp;gt;Desig. género: 0.66&amp;lt;br&amp;gt;Urbanización: 61.1&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e15' cx='406.12' cy='145.27' r='4.75pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Brazil&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.4&amp;lt;br&amp;gt;Desig. género: 0.63&amp;lt;br&amp;gt;Urbanización: 86.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e16' cx='370.41' cy='240.76' r='4.36pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Bulgaria&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.7&amp;lt;br&amp;gt;Desig. género: 0.4&amp;lt;br&amp;gt;Urbanización: 71.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e17' cx='183.63' cy='146.92' r='1.07pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Burundi&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.3&amp;lt;br&amp;gt;Desig. género: 0.63&amp;lt;br&amp;gt;Urbanización: 11&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e18' cx='263.29' cy='128.4' r='2.35pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Cambodia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4.8&amp;lt;br&amp;gt;Desig. género: 0.67&amp;lt;br&amp;gt;Urbanización: 20.1&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e19' cx='188.02' cy='90.95' r='3.99pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Cameroon&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.4&amp;lt;br&amp;gt;Desig. género: 0.76&amp;lt;br&amp;gt;Urbanización: 58.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e20' cx='499.51' cy='286.03' r='4.6pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Canada&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9.1&amp;lt;br&amp;gt;Desig. género: 0.29&amp;lt;br&amp;gt;Urbanización: 80.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e21' cx='82.54' cy='88.89' r='3.31pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Central African Republic&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 1.5&amp;lt;br&amp;gt;Desig. género: 0.77&amp;lt;br&amp;gt;Urbanización: 38.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e22' cx='429.19' cy='197.13' r='4.81pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Chile&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.8&amp;lt;br&amp;gt;Desig. género: 0.5&amp;lt;br&amp;gt;Urbanización: 89&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e23' cx='165.5' cy='238.29' r='3.61pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;China&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3&amp;lt;br&amp;gt;Desig. género: 0.41&amp;lt;br&amp;gt;Urbanización: 47&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e24' cx='360.52' cy='134.16' r='4.46pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Colombia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.6&amp;lt;br&amp;gt;Desig. género: 0.66&amp;lt;br&amp;gt;Urbanización: 75.1&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e25' cx='96.83' cy='69.96' r='3.15pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Congo, Democratic Republic of the&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 1.8&amp;lt;br&amp;gt;Desig. género: 0.81&amp;lt;br&amp;gt;Urbanización: 35.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e26' cx='159.45' cy='98.77' r='4.1pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Congo, Republic of the&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.9&amp;lt;br&amp;gt;Desig. género: 0.74&amp;lt;br&amp;gt;Urbanización: 62.1&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e27' cx='441.83' cy='198.78' r='4.17pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Costa Rica&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8&amp;lt;br&amp;gt;Desig. género: 0.5&amp;lt;br&amp;gt;Urbanización: 64.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e28' cx='194.61' cy='90.12' r='3.73pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Cote d&amp;#39;Ivoire&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.5&amp;lt;br&amp;gt;Desig. género: 0.76&amp;lt;br&amp;gt;Urbanización: 50.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e29' cx='381.4' cy='262.98' r='3.96pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Croatia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.9&amp;lt;br&amp;gt;Desig. género: 0.34&amp;lt;br&amp;gt;Urbanización: 57.7&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e30' cx='194.06' cy='210.3' r='4.46pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Cuba&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.5&amp;lt;br&amp;gt;Desig. género: 0.47&amp;lt;br&amp;gt;Urbanización: 75.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e31' cx='407.22' cy='288.09' r='4.33pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Cyprus&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.4&amp;lt;br&amp;gt;Desig. género: 0.28&amp;lt;br&amp;gt;Urbanización: 70.3&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e32' cx='436.89' cy='269.15' r='4.42pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Czech Republic&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.9&amp;lt;br&amp;gt;Desig. género: 0.33&amp;lt;br&amp;gt;Urbanización: 73.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e33' cx='501.16' cy='318.95' r='4.76pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Denmark&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9.1&amp;lt;br&amp;gt;Desig. género: 0.21&amp;lt;br&amp;gt;Urbanización: 86.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e34' cx='367.12' cy='139.1' r='4.3pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Dominican Republic&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.7&amp;lt;br&amp;gt;Desig. género: 0.65&amp;lt;br&amp;gt;Urbanización: 69.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e35' cx='323.17' cy='139.51' r='4.24pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Ecuador&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.9&amp;lt;br&amp;gt;Desig. género: 0.64&amp;lt;br&amp;gt;Urbanización: 67&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e36' cx='174.29' cy='111.11' r='3.48pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Egypt&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.2&amp;lt;br&amp;gt;Desig. género: 0.71&amp;lt;br&amp;gt;Urbanización: 43.4&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e37' cx='359.42' cy='136.22' r='4.16pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;El Salvador&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.5&amp;lt;br&amp;gt;Desig. género: 0.65&amp;lt;br&amp;gt;Urbanización: 64.3&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e38' cx='425.9' cy='236.64' r='4.31pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Estonia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.7&amp;lt;br&amp;gt;Desig. género: 0.41&amp;lt;br&amp;gt;Urbanización: 69.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e39' cx='496.77' cy='302.9' r='4.72pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Finland&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9&amp;lt;br&amp;gt;Desig. género: 0.25&amp;lt;br&amp;gt;Urbanización: 85.1&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e40' cx='442.38' cy='297.96' r='4.72pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;France&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8&amp;lt;br&amp;gt;Desig. género: 0.26&amp;lt;br&amp;gt;Urbanización: 85.3&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e41' cx='207.25' cy='125.93' r='4.74pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Gabon&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.8&amp;lt;br&amp;gt;Desig. género: 0.68&amp;lt;br&amp;gt;Urbanización: 86&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e42' cx='168.24' cy='99.59' r='3.98pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Gambia, The&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3&amp;lt;br&amp;gt;Desig. género: 0.74&amp;lt;br&amp;gt;Urbanización: 58.2&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e43' cx='320.42' cy='159.27' r='3.81pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Georgia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.8&amp;lt;br&amp;gt;Desig. género: 0.6&amp;lt;br&amp;gt;Urbanización: 52.8&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e44' cx='475.34' cy='306.19' r='4.43pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Germany&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.6&amp;lt;br&amp;gt;Desig. género: 0.24&amp;lt;br&amp;gt;Urbanización: 73.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e45' cx='348.44' cy='104.94' r='3.77pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Ghana&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.3&amp;lt;br&amp;gt;Desig. género: 0.73&amp;lt;br&amp;gt;Urbanización: 51.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e46' cx='409.97' cy='274.5' r='4.08pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Greece&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.4&amp;lt;br&amp;gt;Desig. género: 0.32&amp;lt;br&amp;gt;Urbanización: 61.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e47' cx='319.87' cy='111.52' r='3.7pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Guatemala&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.8&amp;lt;br&amp;gt;Desig. género: 0.71&amp;lt;br&amp;gt;Urbanización: 49.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e48' cx='325.36' cy='130.46' r='2.85pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Guyana&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.9&amp;lt;br&amp;gt;Desig. género: 0.67&amp;lt;br&amp;gt;Urbanización: 28.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e49' cx='210.55' cy='100.82' r='3.79pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Haiti&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.8&amp;lt;br&amp;gt;Desig. género: 0.74&amp;lt;br&amp;gt;Urbanización: 52.1&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e50' cx='321.52' cy='125.11' r='3.77pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Honduras&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.8&amp;lt;br&amp;gt;Desig. género: 0.68&amp;lt;br&amp;gt;Urbanización: 51.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e51' cx='379.75' cy='247.75' r='4.27pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Hungary&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.9&amp;lt;br&amp;gt;Desig. género: 0.38&amp;lt;br&amp;gt;Urbanización: 68.1&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e52' cx='526.98' cy='290.14' r='4.92pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Iceland&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9.6&amp;lt;br&amp;gt;Desig. género: 0.28&amp;lt;br&amp;gt;Urbanización: 93.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e53' cx='435.79' cy='97.12' r='2.91pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;India&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.9&amp;lt;br&amp;gt;Desig. género: 0.75&amp;lt;br&amp;gt;Urbanización: 30&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e54' cx='382.5' cy='125.11' r='3.51pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Indonesia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7&amp;lt;br&amp;gt;Desig. género: 0.68&amp;lt;br&amp;gt;Urbanización: 44.3&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e55' cx='109.46' cy='127.57' r='4.35pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Iran&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2&amp;lt;br&amp;gt;Desig. género: 0.67&amp;lt;br&amp;gt;Urbanización: 70.8&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e56' cx='233.07' cy='95.88' r='4.22pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Iraq&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4.2&amp;lt;br&amp;gt;Desig. género: 0.75&amp;lt;br&amp;gt;Urbanización: 66.2&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e57' cx='479.74' cy='263.39' r='4.09pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Ireland&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.7&amp;lt;br&amp;gt;Desig. género: 0.34&amp;lt;br&amp;gt;Urbanización: 61.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e58' cx='419.86' cy='268.33' r='4.88pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Israel&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.6&amp;lt;br&amp;gt;Desig. género: 0.33&amp;lt;br&amp;gt;Urbanización: 91.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e59' cx='431.94' cy='301.67' r='4.28pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Italy&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.8&amp;lt;br&amp;gt;Desig. género: 0.25&amp;lt;br&amp;gt;Urbanización: 68.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e60' cx='406.67' cy='142.39' r='3.78pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Jamaica&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.4&amp;lt;br&amp;gt;Desig. género: 0.64&amp;lt;br&amp;gt;Urbanización: 52&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e61' cx='444.58' cy='292.61' r='4.23pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Japan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.1&amp;lt;br&amp;gt;Desig. género: 0.27&amp;lt;br&amp;gt;Urbanización: 66.8&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e62' cx='207.25' cy='151.45' r='4.55pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Jordan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.8&amp;lt;br&amp;gt;Desig. género: 0.62&amp;lt;br&amp;gt;Urbanización: 78.5&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e63' cx='174.84' cy='168.32' r='3.99pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Kazakhstan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.2&amp;lt;br&amp;gt;Desig. género: 0.58&amp;lt;br&amp;gt;Urbanización: 58.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e64' cx='282.51' cy='101.23' r='2.49pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Kenya&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.1&amp;lt;br&amp;gt;Desig. género: 0.74&amp;lt;br&amp;gt;Urbanización: 22.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e65' cx='443.48' cy='277.38' r='4.66pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Korea, South&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.1&amp;lt;br&amp;gt;Desig. género: 0.31&amp;lt;br&amp;gt;Urbanización: 83&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e66' cx='208.35' cy='219.35' r='5.03pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Kuwait&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.8&amp;lt;br&amp;gt;Desig. género: 0.45&amp;lt;br&amp;gt;Urbanización: 98.4&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e67' cx='288.56' cy='174.49' r='3.13pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Kyrgyzstan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.2&amp;lt;br&amp;gt;Desig. género: 0.56&amp;lt;br&amp;gt;Urbanización: 34.6&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e68' cx='122.1' cy='137.45' r='3.06pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Laos&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.2&amp;lt;br&amp;gt;Desig. género: 0.65&amp;lt;br&amp;gt;Urbanización: 33.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e69' cx='411.62' cy='274.92' r='4.26pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Latvia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.5&amp;lt;br&amp;gt;Desig. género: 0.32&amp;lt;br&amp;gt;Urbanización: 67.7&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e70' cx='366.57' cy='123.05' r='2.76pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Lesotho&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.7&amp;lt;br&amp;gt;Desig. género: 0.69&amp;lt;br&amp;gt;Urbanización: 26.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e71' cx='272.62' cy='89.71' r='3.64pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Liberia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5&amp;lt;br&amp;gt;Desig. género: 0.77&amp;lt;br&amp;gt;Urbanización: 47.8&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e72' cx='209.45' cy='197.54' r='4.53pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Libya&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.8&amp;lt;br&amp;gt;Desig. género: 0.5&amp;lt;br&amp;gt;Urbanización: 77.9&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e73' cx='414.91' cy='257.22' r='4.24pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Lithuania&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.5&amp;lt;br&amp;gt;Desig. género: 0.36&amp;lt;br&amp;gt;Urbanización: 67&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e74' cx='488.53' cy='274.09' r='4.72pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Luxembourg&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.9&amp;lt;br&amp;gt;Desig. género: 0.32&amp;lt;br&amp;gt;Urbanización: 85.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e75' cx='311.63' cy='93' r='2.32pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Malawi&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.7&amp;lt;br&amp;gt;Desig. género: 0.76&amp;lt;br&amp;gt;Urbanización: 19.8&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e76' cx='357.23' cy='202.07' r='4.38pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Malaysia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.5&amp;lt;br&amp;gt;Desig. género: 0.49&amp;lt;br&amp;gt;Urbanización: 72.2&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e77' cx='318.77' cy='76.13' r='3.18pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Mali&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.8&amp;lt;br&amp;gt;Desig. género: 0.8&amp;lt;br&amp;gt;Urbanización: 35.9&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e78' cx='461.61' cy='242.4' r='4.95pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Malta&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.4&amp;lt;br&amp;gt;Desig. género: 0.4&amp;lt;br&amp;gt;Urbanización: 94.7&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e79' cx='229.77' cy='101.23' r='3.4pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Mauritania&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4.2&amp;lt;br&amp;gt;Desig. género: 0.74&amp;lt;br&amp;gt;Urbanización: 41.4&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e80' cx='449.52' cy='213.18' r='3.42pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Mauritius&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.2&amp;lt;br&amp;gt;Desig. género: 0.47&amp;lt;br&amp;gt;Urbanización: 41.8&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e81' cx='367.67' cy='167.91' r='4.53pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Mexico&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.7&amp;lt;br&amp;gt;Desig. género: 0.58&amp;lt;br&amp;gt;Urbanización: 77.8&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e82' cx='347.89' cy='228.41' r='3.61pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Moldova&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.3&amp;lt;br&amp;gt;Desig. género: 0.43&amp;lt;br&amp;gt;Urbanización: 47&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e83' cx='364.37' cy='189.72' r='4.09pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Mongolia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.6&amp;lt;br&amp;gt;Desig. género: 0.52&amp;lt;br&amp;gt;Urbanización: 62&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e84' cx='220.43' cy='119.76' r='3.98pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Morocco&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4&amp;lt;br&amp;gt;Desig. género: 0.69&amp;lt;br&amp;gt;Urbanización: 58.2&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e85' cx='256.69' cy='109.47' r='3.29pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Mozambique&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4.7&amp;lt;br&amp;gt;Desig. género: 0.72&amp;lt;br&amp;gt;Urbanización: 38.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e86' cx='343.49' cy='151.86' r='3.27pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Namibia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.2&amp;lt;br&amp;gt;Desig. género: 0.62&amp;lt;br&amp;gt;Urbanización: 38&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e87' cx='262.74' cy='110.29' r='2.24pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Nepal&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4.8&amp;lt;br&amp;gt;Desig. género: 0.72&amp;lt;br&amp;gt;Urbanización: 18.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e88' cx='490.72' cy='333.36' r='4.66pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Netherlands&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.9&amp;lt;br&amp;gt;Desig. género: 0.17&amp;lt;br&amp;gt;Urbanización: 82.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e89' cx='509.4' cy='273.27' r='4.74pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;New Zealand&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9.3&amp;lt;br&amp;gt;Desig. género: 0.32&amp;lt;br&amp;gt;Urbanización: 86.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e90' cx='292.95' cy='127.57' r='3.95pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Nicaragua&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.3&amp;lt;br&amp;gt;Desig. género: 0.67&amp;lt;br&amp;gt;Urbanización: 57.3&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e91' cx='221.53' cy='72.84' r='2.11pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Niger&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4&amp;lt;br&amp;gt;Desig. género: 0.81&amp;lt;br&amp;gt;Urbanización: 17.1&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e92' cx='546.21' cy='308.66' r='4.57pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Norway&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9.9&amp;lt;br&amp;gt;Desig. género: 0.23&amp;lt;br&amp;gt;Urbanización: 79.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e93' cx='255.59' cy='108.23' r='3.18pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Pakistan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4.6&amp;lt;br&amp;gt;Desig. género: 0.72&amp;lt;br&amp;gt;Urbanización: 35.9&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e94' cx='389.64' cy='144.04' r='4.45pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Panama&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.1&amp;lt;br&amp;gt;Desig. género: 0.63&amp;lt;br&amp;gt;Urbanización: 74.8&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e95' cx='331.96' cy='82.3' r='1.59pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Papua New Guinea&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6&amp;lt;br&amp;gt;Desig. género: 0.78&amp;lt;br&amp;gt;Urbanización: 12.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e96' cx='344.59' cy='140.33' r='4.08pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Paraguay&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.3&amp;lt;br&amp;gt;Desig. género: 0.64&amp;lt;br&amp;gt;Urbanización: 61.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e97' cx='359.97' cy='152.27' r='4.51pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Peru&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.5&amp;lt;br&amp;gt;Desig. género: 0.61&amp;lt;br&amp;gt;Urbanización: 76.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e98' cx='372.61' cy='148.56' r='3.68pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Philippines&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.8&amp;lt;br&amp;gt;Desig. género: 0.62&amp;lt;br&amp;gt;Urbanización: 48.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e99' cx='411.07' cy='271.21' r='4.06pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Poland&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.5&amp;lt;br&amp;gt;Desig. género: 0.32&amp;lt;br&amp;gt;Urbanización: 61&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e100' cx='428.65' cy='277.38' r='4.06pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Portugal&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.8&amp;lt;br&amp;gt;Desig. género: 0.31&amp;lt;br&amp;gt;Urbanización: 60.7&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e101' cx='175.39' cy='128.81' r='4.97pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Qatar&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.2&amp;lt;br&amp;gt;Desig. género: 0.67&amp;lt;br&amp;gt;Urbanización: 95.8&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e102' cx='367.67' cy='208.24' r='3.96pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Romania&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.7&amp;lt;br&amp;gt;Desig. género: 0.48&amp;lt;br&amp;gt;Urbanización: 57.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e103' cx='186.92' cy='223.06' r='4.41pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Russia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.4&amp;lt;br&amp;gt;Desig. género: 0.44&amp;lt;br&amp;gt;Urbanización: 73.2&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e104' cx='179.23' cy='142.39' r='2.26pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Rwanda&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.2&amp;lt;br&amp;gt;Desig. género: 0.64&amp;lt;br&amp;gt;Urbanización: 18.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e105' cx='100.67' cy='92.18' r='4.64pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Saudi Arabia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 1.8&amp;lt;br&amp;gt;Desig. género: 0.76&amp;lt;br&amp;gt;Urbanización: 82.1&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e106' cx='338.55' cy='105.76' r='3.44pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Senegal&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.2&amp;lt;br&amp;gt;Desig. género: 0.73&amp;lt;br&amp;gt;Urbanización: 42.4&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e107' cx='251.2' cy='93.83' r='3.29pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Sierra Leone&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 4.6&amp;lt;br&amp;gt;Desig. género: 0.76&amp;lt;br&amp;gt;Urbanización: 38.4&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e108' cx='331.96' cy='300.02' r='5.07pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Singapore&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6&amp;lt;br&amp;gt;Desig. género: 0.26&amp;lt;br&amp;gt;Urbanización: 100&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e109' cx='404.47' cy='260.1' r='3.88pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Slovakia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.3&amp;lt;br&amp;gt;Desig. género: 0.35&amp;lt;br&amp;gt;Urbanización: 55&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e110' cx='416.56' cy='284.38' r='3.7pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Slovenia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.6&amp;lt;br&amp;gt;Desig. género: 0.29&amp;lt;br&amp;gt;Urbanización: 49.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e111' cx='430.29' cy='143.63' r='4.09pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;South Africa&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7.8&amp;lt;br&amp;gt;Desig. género: 0.64&amp;lt;br&amp;gt;Urbanización: 61.7&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e112' cx='442.93' cy='289.73' r='4.52pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Spain&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.1&amp;lt;br&amp;gt;Desig. género: 0.28&amp;lt;br&amp;gt;Urbanización: 77.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e113' cx='313.28' cy='158.44' r='1.84pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Sri Lanka&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.7&amp;lt;br&amp;gt;Desig. género: 0.6&amp;lt;br&amp;gt;Urbanización: 14.3&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e114' cx='140.23' cy='113.58' r='3.35pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Sudan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.5&amp;lt;br&amp;gt;Desig. género: 0.71&amp;lt;br&amp;gt;Urbanización: 40.1&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e115' cx='170.44' cy='130.04' r='2.43pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Swaziland&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.1&amp;lt;br&amp;gt;Desig. género: 0.67&amp;lt;br&amp;gt;Urbanización: 21.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e116' cx='535.22' cy='317.72' r='4.71pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Sweden&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9.7&amp;lt;br&amp;gt;Desig. género: 0.21&amp;lt;br&amp;gt;Urbanización: 84.7&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e117' cx='500.06' cy='311.13' r='4.42pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Switzerland&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 9.1&amp;lt;br&amp;gt;Desig. género: 0.23&amp;lt;br&amp;gt;Urbanización: 73.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e118' cx='96.28' cy='122.22' r='3.9pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Syria&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 1.7&amp;lt;br&amp;gt;Desig. género: 0.69&amp;lt;br&amp;gt;Urbanización: 55.7&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e119' cx='130.89' cy='171.2' r='2.72pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Tajikistan&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.4&amp;lt;br&amp;gt;Desig. género: 0.57&amp;lt;br&amp;gt;Urbanización: 26.3&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e120' cx='296.8' cy='163.79' r='3.1pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Thailand&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.4&amp;lt;br&amp;gt;Desig. género: 0.59&amp;lt;br&amp;gt;Urbanización: 34&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e121' cx='190.22' cy='104.12' r='3.48pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Togo&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.5&amp;lt;br&amp;gt;Desig. género: 0.73&amp;lt;br&amp;gt;Urbanización: 43.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e122' cx='384.7' cy='210.3' r='1.79pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Trinidad and Tobago&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 7&amp;lt;br&amp;gt;Desig. género: 0.47&amp;lt;br&amp;gt;Urbanización: 13.9&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e123' cx='347.34' cy='193.01' r='4.25pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Tunisia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.3&amp;lt;br&amp;gt;Desig. género: 0.52&amp;lt;br&amp;gt;Urbanización: 67.3&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e124' cx='281.96' cy='149.39' r='4.32pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Turkey&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.1&amp;lt;br&amp;gt;Desig. género: 0.62&amp;lt;br&amp;gt;Urbanización: 69.7&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e125' cx='287.46' cy='110.7' r='1.71pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Uganda&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.2&amp;lt;br&amp;gt;Desig. género: 0.72&amp;lt;br&amp;gt;Urbanización: 13.3&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e126' cx='298.44' cy='214.42' r='4.29pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Ukraine&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.4&amp;lt;br&amp;gt;Desig. género: 0.46&amp;lt;br&amp;gt;Urbanización: 68.8&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e127' cx='145.72' cy='214' r='4.69pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;United Arab Emirates&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.6&amp;lt;br&amp;gt;Desig. género: 0.46&amp;lt;br&amp;gt;Urbanización: 84.1&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e128' cx='457.21' cy='258.86' r='4.58pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;United Kingdom&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.3&amp;lt;br&amp;gt;Desig. género: 0.36&amp;lt;br&amp;gt;Urbanización: 79.6&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e129' cx='446.23' cy='240.34' r='4.65pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;United States&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.1&amp;lt;br&amp;gt;Desig. género: 0.4&amp;lt;br&amp;gt;Urbanización: 82.3&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e130' cx='449.52' cy='195.89' r='4.89pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Uruguay&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 8.2&amp;lt;br&amp;gt;Desig. género: 0.51&amp;lt;br&amp;gt;Urbanización: 92.5&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e131' cx='279.22' cy='174.08' r='4.92pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Venezuela&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 5.1&amp;lt;br&amp;gt;Desig. género: 0.56&amp;lt;br&amp;gt;Urbanización: 93.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e132' cx='188.02' cy='186.84' r='2.93pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Vietnam&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 3.4&amp;lt;br&amp;gt;Desig. género: 0.53&amp;lt;br&amp;gt;Urbanización: 30.4&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e133' cx='153.96' cy='53.9' r='3pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Yemen&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.8&amp;lt;br&amp;gt;Desig. género: 0.85&amp;lt;br&amp;gt;Urbanización: 31.8&amp;lt;br&amp;gt;Musulmán: Sí&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e134' cx='351.73' cy='95.47' r='3.17pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Zambia&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 6.4&amp;lt;br&amp;gt;Desig. género: 0.75&amp;lt;br&amp;gt;Urbanización: 35.7&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n   <circle id='svg_619a8856_5d2c_4fca_990c_cfa849f230fe_e135' cx='153.41' cy='114.82' r='3.28pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round' title='&amp;lt;b&amp;gt;Zimbabwe&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Democracia: 2.8&amp;lt;br&amp;gt;Desig. género: 0.7&amp;lt;br&amp;gt;Urbanización: 38.3&amp;lt;br&amp;gt;Musulmán: No&amp;lt;br&amp;gt;'/>\n  <\/g>\n  <g clip-path='url(#svg_619a8856_5d2c_4fca_990c_cfa849f230fe_c1)'>\n   <polyline points='35.71,347.33 35.71,39.93' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='18.54' y='284.65' font-size='6.6pt' font-family='Helvetica' fill='#4D4D4D' fill-opacity='1'>0.3<\/text>\n   <text x='18.54' y='202.34' font-size='6.6pt' font-family='Helvetica' fill='#4D4D4D' fill-opacity='1'>0.5<\/text>\n   <text x='18.54' y='120.03' font-size='6.6pt' font-family='Helvetica' fill='#4D4D4D' fill-opacity='1'>0.7<\/text>\n   <polyline points='32.97,281.50 35.71,281.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='32.97,199.19 35.71,199.19' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='32.97,116.87 35.71,116.87' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='35.71,347.33 570.52,347.33' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='138.03,350.07 138.03,347.33' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='275.37,350.07 275.37,347.33' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='412.71,350.07 412.71,347.33' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='550.06,350.07 550.06,347.33' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='131.91' y='358.57' font-size='6.6pt' font-family='Helvetica' fill='#4D4D4D' fill-opacity='1'>2.5<\/text>\n   <text x='269.25' y='358.57' font-size='6.6pt' font-family='Helvetica' fill='#4D4D4D' fill-opacity='1'>5.0<\/text>\n   <text x='406.6' y='358.57' font-size='6.6pt' font-family='Helvetica' fill='#4D4D4D' fill-opacity='1'>7.5<\/text>\n   <text x='541.49' y='358.57' font-size='6.6pt' font-family='Helvetica' fill='#4D4D4D' fill-opacity='1'>10.0<\/text>\n   <text x='273.77' y='371.15' font-size='8.25pt' font-family='Helvetica'>Democracia<\/text>\n   <text transform='translate(13.37,250.52) rotate(-90.00)' font-size='8.25pt' font-family='Helvetica'>Desigualdad de género<\/text>\n   <rect x='106.86' y='384.54' width='232.19' height='28.24' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <text x='112.34' y='402.61' font-size='8.25pt' font-family='Helvetica'>Urbanización<\/text>\n   <rect x='182.03' y='390.02' width='17.28' height='17.28' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <circle cx='190.67' cy='398.66' r='2.65pt' fill='#000000' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round'/>\n   <rect x='220.06' y='390.02' width='17.28' height='17.28' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <circle cx='228.7' cy='398.66' r='3.71pt' fill='#000000' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round'/>\n   <rect x='258.09' y='390.02' width='17.28' height='17.28' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <circle cx='266.73' cy='398.66' r='4.46pt' fill='#000000' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round'/>\n   <rect x='296.12' y='390.02' width='17.28' height='17.28' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <circle cx='304.76' cy='398.66' r='5.07pt' fill='#000000' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round'/>\n   <text x='204.79' y='401.82' font-size='6.6pt' font-family='Helvetica'>25<\/text>\n   <text x='242.82' y='401.82' font-size='6.6pt' font-family='Helvetica'>50<\/text>\n   <text x='280.85' y='401.82' font-size='6.6pt' font-family='Helvetica'>75<\/text>\n   <text x='318.88' y='401.82' font-size='6.6pt' font-family='Helvetica'>100<\/text>\n   <rect x='350.01' y='384.54' width='149.37' height='28.24' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <text x='355.48' y='402.61' font-size='8.25pt' font-family='Helvetica'>Musulmanes<\/text>\n   <rect x='423.34' y='390.02' width='17.28' height='17.28' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <circle cx='431.98' cy='398.66' r='1.47pt' fill='#CD0000' fill-opacity='1' stroke='#CD0000' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round'/>\n   <rect x='462.82' y='390.02' width='17.28' height='17.28' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <circle cx='471.46' cy='398.66' r='1.47pt' fill='#0000FF' fill-opacity='1' stroke='#0000FF' stroke-opacity='1' stroke-width='0.71' stroke-linejoin='round' stroke-linecap='round'/>\n   <text x='446.1' y='401.82' font-size='6.6pt' font-family='Helvetica'>No<\/text>\n   <text x='485.58' y='401.82' font-size='6.6pt' font-family='Helvetica'>Sí<\/text>\n   <text x='35.71' y='32.02' font-size='8.25pt' font-family='Helvetica'>Datos para todos los países del mundo.<\/text>\n   <text x='35.71' y='15.55' font-size='10.5pt' font-weight='bold' font-family='Helvetica'>Democracia<\/text>\n   <text x='118.95' y='15.55' font-size='10.5pt' font-weight='bold' font-family='Helvetica'>y<\/text>\n   <text x='130.63' y='15.55' font-size='10.5pt' font-weight='bold' font-family='Helvetica'>desigualdad<\/text>\n   <text x='216.15' y='15.55' font-size='10.5pt' font-weight='bold' font-family='Helvetica'>de<\/text>\n   <text x='236.37' y='15.55' font-size='10.5pt' font-weight='bold' font-family='Helvetica'>género<\/text>\n   <text x='286.92' y='15.55' font-size='10.5pt' font-weight='bold' font-family='Helvetica'>(propio)<\/text>\n   <text x='329.36' y='424.57' font-size='6.6pt' font-family='Helvetica'>Fuente: elaboración propia con datos del paquete Poliscidata.<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_619a8856_5d2c_4fca_990c_cfa849f230fe","ratio":1.333333333333333,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"fixed":false,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>En el gráfico anterior, he comparado tres gráficos realizados con plantillas de Excel, Stata y ggplot2 con uno hecho por mí. Aunque los tres primeros gráficos son correctos y cumplen con su función, pueden mejorar mucho.</p>
+<p>Añadimos dos variables más: urbanización para el tamaño y si se trata de un país de mayoría musulmana. Además, incorporamos un título en negrita, un subtítulo y una fuente. También hemos cambiado los colores y la posición de la leyenda y lo hemos convertido en una versión interactiva con un “tooltip” con los datos representados de forma detallada.</p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-brewer2005" class="csl-entry" role="listitem">
+Brewer, Cynthia. 2005. <em>Desiging Better Maps: A Guide for GIS Users</em>. New York: ESRI Press.
+</div>
+<div id="ref-brewer2003" class="csl-entry" role="listitem">
+Brewer, Cynthia, Geoffrey W. Hatchard, and Mark Harrower. 2003. <span>“ColorBrewer in Print: A Catalog of Color Schemes for Maps.”</span> <em>Cartography and Geographic Information Science</em> 50 (1): 5–32.
+</div>
+<div id="ref-cleveland1993" class="csl-entry" role="listitem">
+Cleveland, William S. 1993. <em>Visualizing Data</em>. Murray Hill, N.J.: Hobart Press.
+</div>
+<div id="ref-few2004" class="csl-entry" role="listitem">
+Few, Stephen. 2004. <em>Show Me the Numbers: Designing Tables &amp; Graphs to Enlighten</em>. Berkeley: Analytic Press.
+</div>
+<div id="ref-healy2019" class="csl-entry" role="listitem">
+Healy, Kieran. 2019. <em>Data Visualization: A Practical Introduction</em>. Princeton: Princeton University Press.
+</div>
+<div id="ref-munzner2014" class="csl-entry" role="listitem">
+Munzner, Tamara. 2014. <em>Visualization Analysis and Design</em>. Har/Psc edition. Boca Raton: A K Peters/CRC Press.
+</div>
+<div id="ref-tufte2001" class="csl-entry" role="listitem">
+Tufte, Edward R. 2001. <em>The Visual Display of Quantitative Information</em>. Cheshire: Graphic Press.
+</div>
+<div id="ref-yau2011" class="csl-entry" role="listitem">
+Yau, Nathan. 2011. <em>Visualize This: The FlowingData Guide to Design, Visualization, and Statistics</em>. Edición: 1. Indianapolis, Ind: Wiley John + Sons.
+</div>
+<div id="ref-yau2013" class="csl-entry" role="listitem">
+———. 2013. <em>Data Points: Visualization That Means Something</em>. Edición: 1. Indianapolis, IN: Wiley John + Sons.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2025, Rodrigo Rodrigues-Silveira</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ciencia de datos con R - Recursos útiles para la visualización de datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cdatos.qmd">Ciencia de datos políticos</a></li><li class="breadcrumb-item"><a href="./recursos.html">Recursos útiles</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciencia de datos con R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción al curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./cdatos.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ciencia de datos políticos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Recursos útiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos2.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Otra entrada</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./gramatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manipulación y análisis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tipos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tipos de gráfico</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Visualización</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recursos útiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gramatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gramática de los gráficos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tipos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tipos de gráfico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./personalizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apariencia y temas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interactivo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interactividad</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
+  <ul class="collapse">
+  <li><a href="#dataviz-inspiration" id="toc-dataviz-inspiration" class="nav-link" data-scroll-target="#dataviz-inspiration">Dataviz Inspiration</a></li>
+  <li><a href="#data-to-viz" id="toc-data-to-viz" class="nav-link" data-scroll-target="#data-to-viz">Data to Viz</a></li>
+  <li><a href="#r-graph-gallery" id="toc-r-graph-gallery" class="nav-link" data-scroll-target="#r-graph-gallery">R Graph Gallery</a></li>
+  </ul></li>
+  <li><a href="#proyectos-hermosos" id="toc-proyectos-hermosos" class="nav-link" data-scroll-target="#proyectos-hermosos">Proyectos hermosos</a>
+  <ul class="collapse">
+  <li><a href="#dear-data" id="toc-dear-data" class="nav-link" data-scroll-target="#dear-data"><em>Dear Data</em></a></li>
+  <li><a href="#españa-vive-en-pisos-el-diario.es" id="toc-españa-vive-en-pisos-el-diario.es" class="nav-link" data-scroll-target="#españa-vive-en-pisos-el-diario.es"><em>España vive en pisos (El Diario.es)</em></a></li>
+  <li><a href="#el-atlas-de-los-ods" id="toc-el-atlas-de-los-ods" class="nav-link" data-scroll-target="#el-atlas-de-los-ods"><em>El Atlas de los ODS</em></a></li>
+  <li><a href="#poppy-field" id="toc-poppy-field" class="nav-link" data-scroll-target="#poppy-field"><em>Poppy field</em></a></li>
+  <li><a href="#visual-cinnamon" id="toc-visual-cinnamon" class="nav-link" data-scroll-target="#visual-cinnamon"><em>Visual Cinnamon</em></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><b>Recursos</b> <br>útiles para la visualización de datos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Existen muchos proyectos que nos ayudan a crear visualizaciones de datos hermosas y efectivas. Algunos de ellos son recursos extremadamente útiles y repositorios de código disponibles para nosotros.</p>
+<section id="dataviz-inspiration" class="level3">
+<h3 class="anchored" data-anchor-id="dataviz-inspiration"><a href="https://www.dataviz-inspiration.com/" target="_blank">Dataviz Inspiration</a></h3>
+<p>La página web Dataviz inspiration provee hermosos gráficos e historias de datos. Estos ejemplos curados nos ayudan a visualizar el potencial completo de la visualización de datos y a obtener algunas ideas que podemos usar para nuestros propios análisis. Uno de los ejemplos sobresalientes es <a href="https://bxl-malade.medor.coop/?lang=en" target="_blank"><strong>Ailing Brussels</strong></a>, un análisis de la desigualdad en Bruselas por la revista belga de investigación Medór. El proyecto emplea mapas, gráficos, animación y una narrativa convincente a través de imágenes, textos y videos para describir la división espacial de Bruselas en cuanto a oportunidades y niveles de precariedad.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://bxl-malade.medor.coop/?lang=en" target="_blank"><img src="figures/bruselas.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Visite ambos sitios, <a href="https://www.dataviz-inspiration.com/" target="_blank"><em>Dataviz Inspirations</em></a> y <a href="https://bxl-malade.medor.coop/?lang=en" target="_blank"><em>Ailing Brussels</em></a>, para tener una maravillosa experiencia de las posibilidades de la visualización de datos.</p>
+</section>
+<section id="data-to-viz" class="level3">
+<h3 class="anchored" data-anchor-id="data-to-viz"><a href="https://www.data-to-viz.com/" target="_blank">Data to Viz</a></h3>
+<p>El segundo recurso es el Proyecto <a href="https://www.data-to-viz.com/" target="_blank"><em>Data to Viz</em></a>. Es el resultado de un gran esfuerzo de sistematización. Yan Holtz, el creador, organizó gráficos según el tipo de datos o el tipo de análisis. Cada gráfico tiene su propia página explicando cómo y en qué ocasión se debe usar o evitar. También proporciona acceso a <a href="https://r-graph-gallery.com/" target="_blank"><em>R Graph Gallery</em></a> con código detallado que muestra cómo replicarlo en R.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.data-to-viz.com/" target="_blank"><img src="figures/dataviz.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="r-graph-gallery" class="level3">
+<h3 class="anchored" data-anchor-id="r-graph-gallery"><a href="https://r-graph-gallery.com/" target="_blank">R Graph Gallery</a></h3>
+<p>Como se mencionó anteriormente, esta página web es un repositorio que contiene código para que los usuarios reproduzcan muchos tipos diferentes de gráficos en R. ¿Cómo puedo hacer un gráfico de dispersión en R? Mire la galería y lo descubrirá. ¿Y un gráfico de barras? Lo mismo. Este es un lugar obligatorio para buscar cuando se aprende visualización de datos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://r-graph-gallery.com/" target="_blank"><img src="figures/gallery.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="proyectos-hermosos" class="level2">
+<h2 class="anchored" data-anchor-id="proyectos-hermosos">Proyectos hermosos</h2>
+<p>En esta sección, presentamos algunos proyectos que nos inspiran y nos muestran cómo la visualización de datos puede ser hermosa y efectiva.</p>
+<section id="dear-data" class="level3">
+<h3 class="anchored" data-anchor-id="dear-data"><a href="http://www.dear-data.com/theproject" target="_blank"><em>Dear Data</em></a></h3>
+<p>Se trata de un proyecto de dos diseñadoras, Giorgia Lupi y Stefanie Posavec, que consiste en enviar postales semanales con datos personales dibujados a mano. Cada semana, durante un año, las dos diseñadoras recopilaron datos sobre sus vidas cotidianas y los representaron en postales. El proyecto resultante es una colección de visualizaciones de datos dibujadas a mano que revelan la belleza de los datos y la creatividad de las diseñadoras. El proyecto también se convirtió en un libro, <em>Dear Data</em>, que recopila las postales y las visualizaciones de datos.</p>
+<p>Un breve video explicando el proyecto:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/iqaVe1MCTlA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>La metodología empleada explicada con más detalle:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://player.vimeo.com/video/133608605" frameborder="0" allow="autoplay; title=" "="" fullscreen;="" picture-in-picture"="" allowfullscreen=""></iframe></div>
+<p><br></p>
+</section>
+<section id="españa-vive-en-pisos-el-diario.es" class="level3">
+<h3 class="anchored" data-anchor-id="españa-vive-en-pisos-el-diario.es"><a href="https://especiales.eldiario.es/espana-vive-en-pisos/?_ga=2.14402423.1505751021.1664439105-1874779266.1636969305&amp;_gl=1*fws3f8*_ga*MTg3NDc3OTI2Ni4xNjM2OTY5MzA1*_ga_4RZPWREGF3*MTY2NDQzOTEwNS4yNzUuMS4xNjY0NDU3MzkyLjYwLjAuMA.." target="_blank"><em>España vive en pisos (El Diario.es)</em></a></h3>
+<p>Este proyecto de El Diario.es es un ejemplo de cómo la visualización de datos puede ser utilizada para contar historias complejas. El proyecto visualiza la distribución de la población en España y cómo la mayoría de la gente vive en pisos. La visualización combina mapas, gráficos y narrativa para contar la historia de cómo la mayoría de la gente en España vive en pisos y cómo esto afecta a la calidad de vida y la desigualdad en el país.</p>
+<p>No se trata de la única visualización premiada. A día de hoy, el periódico posee el equipo de periodismo de datos más destacado de España y uno de los más reconocidos a nivel internacional.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://especiales.eldiario.es/espana-vive-en-pisos/?_ga=2.14402423.1505751021.1664439105-1874779266.1636969305&amp;_gl=1*fws3f8*_ga*MTg3NDc3OTI2Ni4xNjM2OTY5MzA1*_ga_4RZPWREGF3*MTY2NDQzOTEwNS4yNzUuMS4xNjY0NDU3MzkyLjYwLjAuMA.." target="_blank"><img src="figures/diario.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="el-atlas-de-los-ods" class="level3">
+<h3 class="anchored" data-anchor-id="el-atlas-de-los-ods"><a href="https://datatopics.worldbank.org/sdgatlas?lang=en" target="_blank"><em>El Atlas de los ODS</em></a></h3>
+<p>El Atlas de los Objetivos de Desarrollo Sostenible (ODS) es un proyecto de la División de Datos del Banco Mundial que visualiza los datos de los ODS en un formato interactivo y accesible. El Atlas proporciona visualizaciones de datos sobre los 17 ODS y los 169 objetivos específicos de los ODS. Los datos se presentan en mapas, gráficos y tablas interactivas que permiten a los usuarios explorar los datos y comparar los indicadores de los ODS en diferentes países y regiones. El Atlas es una herramienta valiosa para los responsables de la toma de decisiones, los investigadores y el público en general que deseen comprender mejor los desafíos y las oportunidades relacionados con los ODS.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://datatopics.worldbank.org/sdgatlas?lang=es" target="_blank"><img src="figures/atlas_es.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="poppy-field" class="level3">
+<h3 class="anchored" data-anchor-id="poppy-field"><a href="https://poppyfield.org/" target="_blank"><em>Poppy field</em></a></h3>
+<p>Valentina D’Fillipo creó una visualización para conmemorar el centenario de la Primera Guerra Mundial. La visualización muestra la cantidad de soldados que murieron en las guerras ocurridas durante el período comprendido entre 1914 y 2014, representados por amapolas. La visualización es interactiva y permite a los usuarios explorar la cantidad de soldados que murieron en cada país y en cada año en las distintas guerras. La visualización es hermosa y efectiva, y nos recuerda la importancia de la visualización de datos para contar historias y evitar el olvido de eventos históricos importantes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://poppyfield.org/" target="_blank"><img src="figures/poppy.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="visual-cinnamon" class="level3">
+<h3 class="anchored" data-anchor-id="visual-cinnamon"><a href="https://www.visualcinnamon.com/" target="_blank"><em>Visual Cinnamon</em></a></h3>
+<p>Visual Cinnamon es la página personal de la diseñadora visual Nadieh Bremer. Se trata de una fuente de inspiración para cualquier persona interesada en la visualización de datos. Nadieh es conocida por su estilo único y su habilidad para combinar datos y diseño de una manera hermosa y efectiva. Su portafolio incluye visualizaciones de datos sobre temas como la música, la astronomía y la historia.</p>
+<p>Algunos ejemplos de su trabajo que me gustan particularmente:</p>
+<section id="patrimonio-cultural-intangible-unesco" class="level4">
+<h4 class="anchored" data-anchor-id="patrimonio-cultural-intangible-unesco">Patrimonio cultural intangible (UNESCO)</h4>
+<p>Se trata de una visualización interactiva que muestra el patrimonio cultural intangible de la UNESCO. Incorpora diversos tipos de gráfico y nos permite sacar ideas de qué podemos hacer con diferentes tipos de dato.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://ich.unesco.org/en/dive?display=constellation#tabs" target="_blank"><img src="figures/unesco.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="por-qué-los-gatos-y-perros-google" class="level4">
+<h4 class="anchored" data-anchor-id="por-qué-los-gatos-y-perros-google">¿Por qué los gatos y perros…? (Google)</h4>
+<p>En esta visualización, Nadieh explora las preguntas más comunes sobre gatos y perros en Google. Nos recuerda la estructura jerárquica del lenguaje y cómo podemos representar las alternativas variantes de forma visualmente impactante y efectiva.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://whydocatsanddogs.com/" target="_blank"><img src="figures/cats_dogs.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2025, Rodrigo Rodrigues-Silveira</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
