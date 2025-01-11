@@ -57,22 +57,18 @@ También debéis ejecutar el siguiente código en R que instala los paquetes nec
 ```{r, eval=F}
 
 # Crea un vector con los paquetes a instalar
-pc <- c("ggplot2","ggrepel","ggdist",
+pc <- c("devtools","ggplot2","ggrepel","ggdist",
         "ggiraph","giraphExtra","ggridges","dplyr",
         "vdemdata","sf","cowplot","poliscidata",
         "treemap","treemapify","plotly","networkD3",
         "gapminder","patchwork","ggcorrplot", 
         "ggnetwork","ggridges","ggbeeswarm","ggtext",
         "netrankr","igraph","reactable","RColorBrewer",
-        "hrbrthemes","ggthemes","tvthemes")
-
-## ACTUALIZACIÓN DE PAQUETES (PARA EL DÍA 6 DE JUNIO)
-
-pc <- c("plotly","networkD3",
-        "gapminder","patchwork","ggcorrplot", 
-        "ggnetwork","ggridges","ggbeeswarm","ggtext",
-        "netrankr","igraph","reactable","RColorBrewer",
-        "hrbrthemes","ggthemes","tvthemes")
+        "hrbrthemes","ggthemes","tvthemes","broom",
+        "tidyverse","knittr","kableExtra","rmarkdown",
+        "poliscidata","psych","crosstable","corrplot",
+        "ggpomological","igraph","netrankr","ggpmisc",
+        "forestplot","jtools","stargazer","distributional")
 
 # Instala los paquetes
 install.packages(pc)
@@ -81,6 +77,14 @@ install.packages(pc)
 # (si ya no lo habéis instalado en el curso 
 # anterior de introducción al R)
 devtools::install_github("rodrodr/tenet", force=T)
+devtools::install_github("rstudio/learnr")
+devtools::install_github("rundel/learnrhash")
+devtools::install_github('bbc/bbplot')
+devtools::install_github("vdeminstitute/vdemdata")
+
+# Instala este paquete después de haber instalado los anteriores
+devtools::install_github("gadenbuie/ggpomological")
+
 
 ```
 

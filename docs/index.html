@@ -149,13 +149,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./recursos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Recursos útiles</span></a>
+ <span class="menu-text">Modelos generativos (IA)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./recursos2.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Otra entrada</span></a>
+  <a href="./S_1_IntroR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción al R</span></a>
   </div>
 </li>
       </ul>
@@ -171,14 +171,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tipos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tipos de gráfico</span></a>
+  <a href="./S_2_Datos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Picando datos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tipos_datps.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tipos de datos</span></a>
+  <a href="./S_3_Analisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análisis básicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./encuestas.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Encuentras</span></a>
   </div>
 </li>
       </ul>
@@ -195,13 +201,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./basico.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fundamentos</span></a>
+ <span class="menu-text">Análisis automatizado de textos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./recursos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Recursos útiles</span></a>
+ <span class="menu-text">Modelos generativos (IA)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -226,6 +232,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./interactivo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interactividad</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Textos e Inteligencia Artificial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análisis automatizado de textos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modelos generativos (IA)</span></a>
   </div>
 </li>
       </ul>
@@ -304,30 +333,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea un vector con los paquetes a instalar</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ggplot2"</span>,<span class="st">"ggrepel"</span>,<span class="st">"ggdist"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"devtools"</span>,<span class="st">"ggplot2"</span>,<span class="st">"ggrepel"</span>,<span class="st">"ggdist"</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ggiraph"</span>,<span class="st">"giraphExtra"</span>,<span class="st">"ggridges"</span>,<span class="st">"dplyr"</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"vdemdata"</span>,<span class="st">"sf"</span>,<span class="st">"cowplot"</span>,<span class="st">"poliscidata"</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"treemap"</span>,<span class="st">"treemapify"</span>,<span class="st">"plotly"</span>,<span class="st">"networkD3"</span>,</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"gapminder"</span>,<span class="st">"patchwork"</span>,<span class="st">"ggcorrplot"</span>, </span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ggnetwork"</span>,<span class="st">"ggridges"</span>,<span class="st">"ggbeeswarm"</span>,<span class="st">"ggtext"</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"netrankr"</span>,<span class="st">"igraph"</span>,<span class="st">"reactable"</span>,<span class="st">"RColorBrewer"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hrbrthemes"</span>,<span class="st">"ggthemes"</span>,<span class="st">"tvthemes"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## ACTUALIZACIÓN DE PAQUETES (PARA EL DÍA 6 DE JUNIO)</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>pc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"plotly"</span>,<span class="st">"networkD3"</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"gapminder"</span>,<span class="st">"patchwork"</span>,<span class="st">"ggcorrplot"</span>, </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ggnetwork"</span>,<span class="st">"ggridges"</span>,<span class="st">"ggbeeswarm"</span>,<span class="st">"ggtext"</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"netrankr"</span>,<span class="st">"igraph"</span>,<span class="st">"reactable"</span>,<span class="st">"RColorBrewer"</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hrbrthemes"</span>,<span class="st">"ggthemes"</span>,<span class="st">"tvthemes"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala los paquetes</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pc)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala el paquete tenet que no está en CRAN</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># (si ya no lo habéis instalado en el curso </span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># anterior de introducción al R)</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rodrodr/tenet"</span>, <span class="at">force=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hrbrthemes"</span>,<span class="st">"ggthemes"</span>,<span class="st">"tvthemes"</span>,<span class="st">"broom"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"tidyverse"</span>,<span class="st">"knittr"</span>,<span class="st">"kableExtra"</span>,<span class="st">"rmarkdown"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"poliscidata"</span>,<span class="st">"psych"</span>,<span class="st">"crosstable"</span>,<span class="st">"corrplot"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ggpomological"</span>,<span class="st">"igraph"</span>,<span class="st">"netrankr"</span>,<span class="st">"ggpmisc"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"forestplot"</span>,<span class="st">"jtools"</span>,<span class="st">"stargazer"</span>,<span class="st">"distributional"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala los paquetes</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pc)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala el paquete tenet que no está en CRAN</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># (si ya no lo habéis instalado en el curso </span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># anterior de introducción al R)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rodrodr/tenet"</span>, <span class="at">force=</span>T)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/learnr"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rundel/learnrhash"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'bbc/bbplot'</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"vdeminstitute/vdemdata"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala este paquete después de haber instalado los anteriores</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"gadenbuie/ggpomological"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 

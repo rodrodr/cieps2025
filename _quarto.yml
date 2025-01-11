@@ -13,16 +13,18 @@ website:
         href: index.qmd
       - section: Ciencia de datos políticos
         contents:
-            - text: Recursos útiles
+            - text: Ciencias de datos y política
               href: recursos.qmd
-            - text: Otra entrada
-              href: recursos2.qmd
+            - text: Introducción al R
+              href: S_1_IntroR.qmd
       - section: Manipulación y análisis
         contents:
-            - text: Manipulación de datos
-              href: tipos.qmd
-            - text: Tipos de datos
-              href: tipos_datps.qmd
+            - text: Picando datos
+              href: S_2_Datos.qmd
+            - text: Análisis básicos
+              href: S_3_Analisis.qmd
+            - text: Encuentras
+              href: encuestas.qmd
       - section: Visualización
         contents:
             - text: Fundamentos
@@ -37,6 +39,13 @@ website:
               href: personalizacion.qmd
             - text: Interactividad
               href: interactivo.qmd
+      - section: Textos e Inteligencia Artificial
+        contents:
+            - text: Análisis automatizado de textos
+              href: basico.qmd
+            - text: Modelos generativos (IA)
+              href: recursos.qmd
+
 
   page-footer:
     left: "&copy; Copyright 2025, Rodrigo Rodrigues-Silveira"
