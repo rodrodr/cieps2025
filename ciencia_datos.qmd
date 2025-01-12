@@ -43,23 +43,18 @@ Como vemos, los cambios en la forma de hacer ciencia han sido radicales y han ab
 
 ## Paquetes estadísticos o lenguajes de programación
 
+No sé si por mero hábito o puro vicio, muchos programas de grado y posgrado en ciencias sociales siguen enseñando a sus estudiantes a usar paquetes estadísticos como el SPSS en lugar de lenguajes de programación como R o Python. El principal motivo es quizas la facilidad de uso de los primeros, que permiten hacer análisis estadísticos sin necesidad de programar. Las interfaces basadas en menús y ventanas emergentes pasan una impresión de control y familiaridad con los análisis estadísticos, algo que ni siempre es cierto. 
 
-
-SPSS o R
-
+Los lenguajes de programación, por otra parte, resultan más difíciles de aprender, sobre todo si uno nunca ha programado en su vida. Sin embargo, amplian el abanico de posibilidades de análisis mucho más allá de lo que podría soñar alguien con fluencia en SPSS, por ejemplo. El video abajo ayuda a entender las diferencias entre ambos y por qué deberíamos abandonar los paquetes estadísticos en favor de los lenguajes de programación:
 
 {{< video https://www.youtube.com/watch?v=JhKfehtXcHA >}}
 
-
-
-R o Python
-
+Si uno está convencido de que debe aprender a programar, emerge otro debate: ¿R o Python? Ambos lenguajes son muy útiles para el análisis de datos, ambos se utilizan en aplicaciones punteras de IA y ambos tienen una comunidad de usuarios muy activa. R es más empleado entre investigadores, mientras que Python es más popular en la industria. Las capacidades de gráficos de R son superiores a las de Python, pero Python es más versátil y se emplea en una gama más amplia de aplicaciones. El video abajo ayuda a entender las diferencias entre ambos:
 
 {{< video https://www.youtube.com/watch?v=i9mPOvT0X6M >}}
 
+La principal razón para aprender R en la ciencia política se encuentra en que la mayoría de los artículos y análisis de datos se programan en R. No obstante, tal preponderancia puede desaparecer en el futuro. Muchos modelos de IA se programan en Python y algunos investigadores empiezan a mezclar ambos lenguajes en sus análisis.
 
-
-R es el lenguaje más empleado en las ciencias sociales hoy, pero esto puede cambiar en el futuro. Muchos modelos de IA se programan en Python y algunos investigadores empiezan a mezclar ambos lenguajes en sus análisis.
 
 
 ## Tengo que aprender a programar, ¿cómo empiezo?
@@ -89,19 +84,18 @@ Disponible en las plataformas *Steam*, Nintengo Switch o en la *App Store* de Ap
 Swift Playgrounds es un juego educativo de Apple que te permite aprender a programar en Swift, el lenguaje de programación de Apple. Lo más interesante no está en aprender Swift, sino en entrar en contacto con un lenguaje de **script**, algo más avanzado que los juegos anteriores. El juego trata de ayudar a un personaje a resolver problemas de programación de forma progresiva: recolectar yemas, abrir portales, etc. Para ello, tienes que crear programas en Swift, algo que resulta muy sencillo gracias a la interfaz gráfica del juego. Además, no hay límite. La interfaz de Playgrounds permite que puedas escribir incluso aplicaciones profesionales, si avanzas lo suficiente. La aplicación es totalmente gratis, pero solo está disponible en ordenadores Mac o en iPads.
 
 
-### Cursos online
+### Asistiendo a cursos online
 
-Especialización en [ciencia de datos](https://www.coursera.org/specializations/jhu-data-science#courses) de la Universidad Johns Hopkins en Coursera.
+Existe una enorme cantidad de recursos online para el aprendizaje de R y de programación en general. Se pueden encontrar una multitud de videos y tutoriales en Youtube o libros online gratuitos que te pueden ayudar a aprender a programar. Los cursos online representa una opción más estructurada y progresiva de estudiar. Aunque sean de pago, el coste no suele ser muy elevado (cuesta lo mismo o incluso menos que un libro técnico impreso) y la calidad suele ser alta, especialmente aquellos organizados por universidades o empresas de tecnología. En esta sesión recomiendo dos que pueden ser útilies para los iniciantes. Ambos se encuentran en Coursera, aunque se pueden encontrar otras alternativas en EdX, Udemy, Codecademy, etc. Aunque estén en inglés, poseen subtítulos en español que permiten entender todo el contenido sin problemas.
 
-Una [introducción al R](https://www.coursera.org/learn/data-analysis-r?specialization=google-data-analytics) hecha por Google en Coursera.
+El primero es la [especialización en ciencia de datos](https://www.coursera.org/specializations/jhu-data-science#courses) de la Universidad Johns Hopkins. Ha sido el que he cursado yo en 2011 cuando hice la transición desde Stata a R. El curso es bastante completo y bien evaluado, los ejercicios son muy prácticos y los profesores muy didácticos. Cubren desde los principios hasta programación más avanzada en R.
 
-Otra [Introducción al R](https://www.coursera.org/learn/introducton-r-programming-data-science#modules) de IBM, también en Coursera. 
+El segundo es la [introducción al R](https://www.coursera.org/learn/data-analysis-r?specialization=google-data-analytics) hecha por Google. Es un curso más corto y menos completo que el anterior, pero también muy bien valorado. Los materiales son creados de modo profesional y muy bien cuidados en sus aspectos estéticos y didácticos. 
 
 
+### [**Practicando con tus datos**]{style="color:darkred;"}
 
-### [**Practica con tus datos**]{style="color:darkred;"}
-
-Lo más importante para aprender a programar es emplear tus propios datos o resolver problemas reales de análisis de datos con el lenguaje que deseas manipular. 
+Lo más importante para aprender a programar es emplear tus propios datos o resolver problemas reales de análisis de datos con el lenguaje que deseas manipular. La estrategia ideal consiste en combinar 
 
 Algunos consejos clave para consolidar el proceso de aprendizaje:
 

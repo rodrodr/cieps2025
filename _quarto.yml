@@ -23,7 +23,7 @@ website:
               href: S_2_Datos.qmd
             - text: Análisis básicos
               href: S_3_Analisis.qmd
-            - text: Encuentras
+            - text: Encuentas
               href: encuestas.qmd
       - section: Visualización
         contents:
