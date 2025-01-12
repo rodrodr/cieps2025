@@ -753,7 +753,7 @@ is.character(a)
 
 ```
 
-**Exercise 3.** From text to Date. If a variable only contains dates expressed as text, users will not be able to calculate time differences. This is why it is important to convert calendar information into a proper Date type to get the full advantages of being able to establishing time metrics within R. Convert variable *a* from character to Date. After each conversion, check if the conversion was successful.
+**Ejercicio 3.** De texto a fecha. Si una variable solo contiene fechas representadas como texto, los usuarios no serán capaces de calcular diferencias de tiempo. Por eso es importante convertir la información del calendario en un tipo de fecha adecuado para obtener todas las ventajas de poder establecer métricas de tiempo en R. Convierte la variable *a* de carácter a fecha. Tras cada conversión, verifica si la conversión fue exitosa.
 
 ```{r 02_conv_txdt, exercise=TRUE, exercise.lines=10}
 
