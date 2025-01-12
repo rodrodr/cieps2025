@@ -5,7 +5,7 @@ project:
     - "*.qmd"
     
 website:
-  title: "Ciencia de datos con R"
+  title: "Ciencia de datos<br>políticos con R"
   sidebar:
     collapse-level: 1
     contents:

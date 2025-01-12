@@ -1,0 +1,116 @@
+---
+title: "Ciencia de datos<br><b>políticos</b>"
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+
+# Carga las librerías
+library(reactable)
+
+```
+
+## ¿Qué es ciencia de datos?
+
+{{< video https://www.youtube.com/watch?v=dcXqhMqhZUo >}}
+
+El análisis de datos no representa una gran innovación para los científicos sociales. Desde hace décadas, empleamos técnicas de recolección y análisis de datos que nos permiten identificar patrones y llevar a cabo inferencias sobre cómo funciona la sociedad, la política o la economía. Empleamos técnicas cualitativas y estadísticas para analizar los datos, así como diferentes métodos de comunicación de resultados, como la visualización de datos o la narrativa basada en datos. Además, empleamos datos secundarios o controlamos técnicas de recolección de datos como encuestas, entrevistas o experimentos.
+
+No obstante, ¿por qué ahora se ha puesto de moda el término ciencia de datos? En gran medida, la respuesta se encuentra en un cambio de paradigma entre los profesionales de tecnología de información (TI). Antes, el TI se dedidaba fundamentalmente en la gestión de bases de datos y en la programación de aplicaciones. El análisis de datos se debaja en manos de los departamentos especializados de grandes corporaciones, como financiero, contabilidad, etc. No obstante, hoy, las fronteras entre el tratamiento y recolección de datos y su análisis se han difuminado. Más y más profesionales de TI se dedican a analizar datos y desarrollan nuevos métodos a partir de la combinación de una cantidad creciente de datos con técnicas estadísticas tradicionales. Modelos estadísticos tradicionales, como la regresión logística, por ejemplo, se han empleado de forma innovadora utilizando cantidades ingentes de datos para no solo explicar fenómenos, sino para predecir comportamientos futuros. 
+
+La difusión de Internet y la digitalización de diversos procesos políticos, económicos y sociales han generado un volumen sin precedente de datos que exigían nuevos métodos de análisis. De golpe, un politólogo tenía acceso a todas las series de votación por candidato y mesa desde hace 30 años o todos los diarios de sesiones de un parlamento desde la redemocratización. Este aluvión de datos trajo consigo nuevos retos para el análisis. Los métodos tradicionales de organización de datos (planillas Excel, documentos Word o bases de datos de SPSS) se han quedado cortos frente a nuevos formatos y la exigencia de conocimientos de programación para convertir, por ejemplo, texto en información que permita el análisis. 
+
+Por esa razón, investigadores y científicos sociales han percibido las ventajas y oportunidades ofrecidas por mejores conocimientos de programación y tratamiento de datos. De golpe, resultó posible tratar, estructurar y analizar cantidades de datos hasta poco tiempo impensables. ¿Cómo mapear la evolución de los derechos femeninos en 30 años de debates parlamentarios en cinco países de América Latina? Si consideramos que una sola legislatura puede generar alrededor de 30 mil páginas de debates, un análisis manual resulta imposible. No obstante, con técnicas de procesamiento de lenguaje natural y análisis de redes, tal análisis se ha viable.
+
+Como hemos podido ver en el video arriba, nuestro trabajo se asemeja más al de un **analista de datos** que al de un **científico de datos** de forma más general. Utilizamos diferentes herramientas para encontrar patrones en los datos, desarrollar modelos explicativos y empleamos técnicas de visualización tanto para explorar como para comunicar nuestros resultados. Además, somos expertos en la construcción de narrativas coherentes que articulan una multiplicidad de datos en un relato comprensible y que sirve de base para la toma de decisión de distintos actores, tanto públicos como privados.
+
+No obstante, resulta cada vez más interesante navigar por ambos mundos y conocer las técnicas de manejo y modelaje de datos existentes. Tal necesidad se hace incluso más premente por los cambios del modo de hacer ciencia en las ciencias sociales, que se acercan a pasos agigantados a las ciencias naturales. Grupos de investigación multidisciplinarios y laboratorios, antes raros, se han convertido en el foco de financiación por gobiernos y otras entidades. La colaboración entre politólogos, informáticos, sociólogos y estadísticos resulta más común y deseada. 
+
+
+## ¿Cómo se aplica a la política?
+
+{{< video https://www.youtube.com/watch?v=zjvy9fFQsEw >}}
+
+Empezamos esta sección con el vídeo de Cambridge Analytica, porque no hay nadie mejor que ellos para explicarnos cómo esa nueva perspectiva de datos puede ser (mal)empleada en la política. La empresa ha sido objeto de un escándalo al recolectar datos de forma no autorizada y emplearlos para influir en las elecciones estadunidenses de 2016. A través de la recolección de datos de millones de usuarios de Facebook, la empresa fue capaz de desarrollar perfiles psicológicos de los votantes y dirigir mensajes específicos a cada uno de ellos. Aunque no sabemos exactamente cuánto y cómo influyó en el voto, la publicidad recibida por el caso ha abierto un debate importante sobre la ética en el uso de los datos personales y cómo estos pueden ser empleados para influir en la toma de decisiones de los ciudadanos.
+
+Nuevas aplicaciones de la ciencia de datos en la política se han vuelto comunes. Modelos de análisis de texto permiten identificar patrones en discursos políticos y debates parlamentarios. Análisis de redes de coautoría de leyes se emplean para medir cambios en la polarización de los diputados. Nuevos datos + nuevas técnicas de análisis = nuevas preguntas y métodos para entender cómo funciona la política.
+
+Lo mismo pasa en las políticas públicas. Aunque el análisis de datos aplicado a la evaluación de políticas públicas no sea algo nuevo, la cantidad de datos disponibles y las técnicas de análisis han cambiado radicalmente. Hoy, es posible evaluar el impacto de una política pública en tiempo real, a través de la recolección de datos en línea y sistemas de información integrados. Muchas universidades han desarrollado incluso grados o posgrados especializados en el análisis de datos orientado hacia las políticas públicas:
+
+{{< video https://www.youtube.com/watch?v=QtQRjH3fcow >}}
+
+Como vemos, los cambios en la forma de hacer ciencia han sido radicales y han abierto un abanico de posibilidades para los investigadores de ciencias sociales. Los modelos de Inteligencia Artificial prometen ser aún más disruptivos en un futuro cercano. Por ello, resulta necesario, al menos, tener un conocimiento básico de tales tecnologías y cómo se aplican a distintos ámbitos de la ciencia política y las políticas públicas.
+
+## Paquetes estadísticos o lenguajes de programación
+
+
+
+SPSS o R
+
+
+{{< video https://www.youtube.com/watch?v=JhKfehtXcHA >}}
+
+
+
+R o Python
+
+
+{{< video https://www.youtube.com/watch?v=i9mPOvT0X6M >}}
+
+
+
+R es el lenguaje más empleado en las ciencias sociales hoy, pero esto puede cambiar en el futuro. Muchos modelos de IA se programan en Python y algunos investigadores empiezan a mezclar ambos lenguajes en sus análisis.
+
+
+## Tengo que aprender a programar, ¿cómo empiezo?
+
+Muchos investigadores de ciencias sociales se sienten impulsados a adquirir nuevos conocimientos en programación y análisis de datos. Dicha tarea muchas veces puede parecer abrumadora. No obstante, existe un enorme abanico de recursos gratuitos y de pago que facilitan enormemente el proceso de aprendizaje. 
+
+### Jugando
+
+Una forma de aprender a programar cuando uno no tiene ninguna experiencia previa es jugando. Existen varios juegos educativos que te permiten aprender conceptos básicos de programación de forma muy divertida y progresiva. En esta sección, presentamos algunos juegos, algunos gratuitos y otros de pago, que te pueden ayudar a aprender a programar de forma muy divertida y progresiva. Con estos juegos, no aprenderás a programar en un lenguaje de programación real, pero sí a pensar de forma algorítmica y a resolver problemas de forma estructurada. Se trata de un paso irreemplazable en el proceso de aprendizaje de la programación. Aunque puedan parecer "infantiles" y la publicidad vaya dirigida a padres que quieren que sus hijos aprendan principios de programación y ciencia de la computación, tengo a doctorandos míos enganchados a algunos de estos juegos. 
+
+[**Rabbids Coding**](https://store.ubisoft.com/es/rabbids-coding/5d96f9b05cdf9a2eacdf68cb.html)
+
+{{< video https://www.youtube.com/watch?v=B8dZdqJUU6Y >}}
+
+Rabbids Coding es quizás el más fácil de obtener y jugar. Se trata de un juego educativo en el que puedes aprender algunos conceptos básicos de programación como el de algoritmo, reiteración, condiciones, bucles jugando. El juego tiene dos grandes puntos fuertes. Primero, es totalmente grátis y se puede jugar en cualquier ordenador o móvil. Segundo, es muy divertido y adictivo. Empieza en un nivel muy fácil, pero va a aumentando la complejidad a medida en que vas superando niveles.
+
+[**7 Billion Humans**](https://tomorrowcorporation.com/7billionhumans)
+
+{{< video https://www.youtube.com/watch?v=LWmMNDbJJjg >}}
+
+Disponible en las plataformas *Steam*, Nintengo Switch o en la *App Store* de Apple, 7 billion humans es un juego de programación un poco más avanzado que Rabbids Coding. Aunque sea de pago (alrededor 6 o 7 dólares en la *App Store* de Apple o 15 en *Steam*), en el puedes aprender conceptos más avanzados de programación de forma muy divertida y progresiva. Los conceptos son los mismos: algoritmo, reiteración, condiciones, bucles, funciones, entre otros. Aprenderás a pensar de forma algorítmica y a resolver problemas de forma estructurada como en un lenguaje de programación real, pero utilizando bloques, lo que facilita el aprendizaje.
+
+[**Swift Playgrounds**](https://www.apple.com/es/swift/playgrounds/)
+
+{{< video https://www.youtube.com/watch?v=jC_p84oThrs >}}
+
+Swift Playgrounds es un juego educativo de Apple que te permite aprender a programar en Swift, el lenguaje de programación de Apple. Lo más interesante no está en aprender Swift, sino en entrar en contacto con un lenguaje de **script**, algo más avanzado que los juegos anteriores. El juego trata de ayudar a un personaje a resolver problemas de programación de forma progresiva: recolectar yemas, abrir portales, etc. Para ello, tienes que crear programas en Swift, algo que resulta muy sencillo gracias a la interfaz gráfica del juego. Además, no hay límite. La interfaz de Playgrounds permite que puedas escribir incluso aplicaciones profesionales, si avanzas lo suficiente. La aplicación es totalmente gratis, pero solo está disponible en ordenadores Mac o en iPads.
+
+
+### Cursos online
+
+Especialización en [ciencia de datos](https://www.coursera.org/specializations/jhu-data-science#courses) de la Universidad Johns Hopkins en Coursera.
+
+Una [introducción al R](https://www.coursera.org/learn/data-analysis-r?specialization=google-data-analytics) hecha por Google en Coursera.
+
+Otra [Introducción al R](https://www.coursera.org/learn/introducton-r-programming-data-science#modules) de IBM, también en Coursera. 
+
+
+
+### [**Practica con tus datos**]{style="color:darkred;"}
+
+Lo más importante para aprender a programar es emplear tus propios datos o resolver problemas reales de análisis de datos con el lenguaje que deseas manipular. 
+
+Algunos consejos clave para consolidar el proceso de aprendizaje:
+
+1. **Trabaja con un problema y datos reales**. Intenta integrar el uso de la herramienta en tu trabajo cotidiano. Esto te permitirá emplear tu horario laboral para aprender y, al mismo tiempo, resolver problemas reales. De inicio no se trata de hacer todo de golpe en un nuevo lenguaje, pero ir integrando poco a poco el uso de la herramienta en tu trabajo cotidiano.
+
+2. **Elige problemas concretos para empezar**. Resulta mucho más fácil aprender si restringes el proyecto a un conjunto abarcable de tareas o problemas concretos, como abrir y limpiar los datos o llevar a cabo ciertos análisis básicos. Quizás, al principio, empiezas a abrir y transformar los datos o hacer gráficos con R y, luego, te dedicas a hacer análisis más complejos o integrar otras fases del proceso.
+
+3. **Define objetivos claros**. Establezca metas de aprendizaje claras y alcanzables. Por ejemplo, abrir datos de Excel, SPSS, Stata y CSV en R. Luego, limpiar los datos y calcular algunos indicadores y así sucesivamente. Elegir objetivos pequeños, concretos y que permitan la visualización de resultados rápidos es muy buena estrategia para no perder el ánimo en procesos de aprendizaje complejos como puede ser aprender un lenguaje de programación por primera vez.
+
+4. **Trabaja en equipo**. La colaboración entre individuos con diferentes niveles y habilidades hace el proceso de aprendizaje más ameno, divertido y, por ende, efectivo. Elige bien el grupo de personas, integra a gente con distintos niveles de conocimiento y experiencia y los resultados pueden ser enormemente sorpreendentes. Los compañeros ayudan tanto en la motivación como un primer recurso para resolver problemas. Podéis incluso establecer mecanismos lúdicos para aumentar la colaboración o la competencia entre los miembros del grupo. Por ejemplo, "el individuo o equipo dentro del grupo que resuelva primero el problema elige el próximo reto o no paga la primera ronda de cervezas".
+
+5. **Mantén el foco en aprender**. Por más que emplees la herramienta en tu trabajo cotidiano, no pierdas de vista que el objetivo es aprender. Tampoco te frustres por la pérdida inicial de productividad. La peor tentación viene cuando uno piensa: "Yo lo hago en 10 minutos en SPSS, ¿por qué tengo que perderme horas intentando hacer lo mismo en R?". Es verdad, pero una vez aprendido, la misma tarea la prodrás hacer en pocos segundos o ser mucho más efectivo en el proceso de análisis de datos como un todo: de la recolección a la publicación de los resultados.
