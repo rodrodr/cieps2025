@@ -5,7 +5,7 @@ project:
     - "*.qmd"
     
 website:
-  title: "Ciencia de datos<br>políticos con R"
+  title: "Ciencia de datos <br>políticos con R"
   sidebar:
     collapse-level: 1
     contents:
@@ -23,8 +23,8 @@ website:
               href: S_2_Datos.qmd
             - text: Análisis básicos
               href: S_3_Analisis.qmd
-            - text: Encuentas
-              href: encuestas.qmd
+#            - text: Encuentas
+#              href: encuestas.qmd
       - section: Visualización
         contents:
             - text: Fundamentos

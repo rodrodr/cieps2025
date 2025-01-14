@@ -1,0 +1,192 @@
+---
+title: "Modelos de<br><b>Inteligencia Artificial Generativa</b>"
+bibliography: references.bib
+format:
+  html:
+    code-overflow: wrap
+include-in-header:
+  - text: |
+      <style>
+      .cell-output-stdout code {
+        word-break: break-wor !important;
+        white-space: pre-wrap !important;
+      }
+      </style>
+---
+
+```{r setup, include=FALSE}
+
+# Carga las librerías
+library(reactable)
+
+```
+
+## ¿Qué son los modelos de inteligencia artificial generativa?
+
+
+{{< video https://www.youtube.com/watch?v=-idMBeCCCzs >}}
+
+Aunque su creación remonta a la década de 1950, los modelos de lenguaje como el chatGPT han popularizado la inteligencia artificial.
+
+
+## Modelos LLM y análisis de datos
+
+{{< video https://www.youtube.com/watch?v=zjvy9fFQsEw >}}
+
+
+
+## Cómo dar instrucciones a una IA generativa
+
+{{< video https://www.youtube.com/watch?v=7kBJerjnQTk&list=PLTZYG7bZ1u6qcDyJTU9d7Uym3oJpREuYa&index=2 >}}
+
+Imagina que los modelos de IA como el chatGPT son como un niño pequeño que necesita instrucciones claras para hacer algo. Cuanto más preciso y claro seas, mejor será el resultado, especialmente cuando se trata de tareas complejas o específicas. La técnica de  *prompting* consiste en un conjunto de estrategias empleadas para dar instrucciones a una IA generativa. Su objetivo consiste en guiar a la IA para que pueda llevar a cabo tareas especializadas como analizar datos o escribir textos para públicos concretos. Durante el curso, emplearemos algunos ejemplos de *prompting* que te ayudarán a realizar tareas de análisis sencillas, como extraer información de textos o generar resúmenes automáticos.
+
+Los pasos a seguir son los siguientes:
+
+**1. Define el "personaje".** La mejor manera de guiar la IA consiste en definir una "persona" que quieres que el modelo asuma. Por ejemplo, si quieres que la IA te ayude a recolectar datos puedes decirle: "Eres un investigador que necesita extraer datos de un conjunto de textos." Eso ayudará al modelo a asumir una perspectiva especializada. No será cualquier respuesta, sino que intentará simular la posición de un investigador. 
+
+**2. Describe la tarea.** Una vez que hayas definido el "personaje", debes describir la tarea que quieres que la IA realice. Por ejemplo, si quieres que la IA te ayude a recolectar datos, puedes decirle: "Necesito que extraigas el país de origen, la edad y el sexo de las personas que aparecen en el texto." 
+
+**3. Proporciona contexto con ejemplos.** Para que la IA pueda entender mejor lo que quieres, es importante que le proporciones ejemplos. Por ejemplo, si quieres que la IA te ayude a recolectar datos, puedes proporcionarle un texto de ejemplo y decirle: "Aquí tienes un texto de ejemplo. "El brasileño Rodrigo, de 47 años, es profesor de ciencia política en la Universidad de Salamanca. Devuélveme: Rodrigo;Brasil;47." 
+
+**4. Define el formato de salida.** Si quieres que te devuelva los resultados en un formato específico, debes definir cómo quieres que el modelo te entregue los datos. Por ejemplo, puedes decirle: "Devuélveme los datos en un formato csv, separado por ; y con los nombres de las columnas son 'nombre' 'país' y 'edad'." También puedes definir el tono en que el modelo devuelva los resultados. Puede ser un tono formal, informal, técnico o con ejemplos dependiendo de tus necesidades.
+
+**5. Incluye restricciones.** Si hay alguna restricción que deba tener en cuenta, es importante que se la comuniques a la IA. Por ejemplo, si no quieres que la IA te devuelva datos de personas menores de edad o de ciertos países, debes decírselo.
+
+**6. Evalúa los resultados.** Una vez que la IA haya completado la tarea, es importante que evalúes los resultados. Si no son los esperados, puedes intentar reformular la tarea o proporcionar más ejemplos para ayudar a la IA a entender mejor lo que quieres.
+
+**7. Refina el *prompt* y vuelve a intentar.** Si los primeros resultados obtenidos no corresponden a las necesidades, puedes siempre ajustar y refinar el *prompt* para obtener mejores resultados. Una vez obtenidos los resultados esperados, puedes automatizar el proceso para que el modelo haga el trabajo por ti.
+
+Resulta importante ser muy claro. A veces, puede ser mejor definir puntos o ítenes que faciliten el entendimiento de la tarea. Utilizar frases cortas y con poca ambigüedad puede ser de gran ayuda. Organizar las instrucciones de forma secuencial y lógica también puede hacer toda la diferencia.
+
+Un ejemplo:
+
+
+## Un chatGPT en tu ordenador
+
+La mayoría de la gente hoy utiliza chatGPT o similares para obtener ayuda en tareas cotidianas como consultas rápidas o resolución de dudas. No obstante, si uno desea emplearlos para tareas más especializadas, como el análisis de grandes volúmenes de datos, dichos modelos pueden traer algunas desventajas importantes. La primera es el coste. Imagina extraer información de miles de archivos pdf. Si bien un modelo de lenguaje como el chatGPT puede hacerlo, el coste de hacerlo puede ser prohibitivo. La segunda desventaja es la privacidad. Si los datos que deseas analizar son sensibles, como datos personales o información confidencial, no es recomendable enviarlos a un servidor externo. Por ejemplo, uno no quiere que su dirección y número de teléfono sean enviados a un servidor externo para ser analizados.  
+
+Por eso, la utilización de modelos locales de menor tamaño pueden ser una excelente alternativa. Aunque menos potentes que un chatGPT de última generación, estos modelos pueden realizar bien muchas tareas especializadas, desde que se les proporcione un buen *prompt*. El R permite el empleo de modelos LLM desde nuestros ordenador a partir del proyecto [Ollama](https://ollama.com/) y de la librería [rollama](https://github.com/JBGruber/rollama). 
+Ollama es un proyecto que permite la utilización de modelos de lenguaje en R. A través de la librería **rollama**, es posible emplear modelos de lenguaje locales en R. El primer paso consiste en instalar **Ollama** en el ordenador. Para ello, debes visitar https://ollama.com/download para descargar el aplicativo de Ollama adecuado a tu sistema operativo. Una vez descargado, debes instalarlo en tu ordenador. Una vez instalado, deber abrir el aplicativo para que funcione el sistema y puedas descargar los modelos y emplearlos en R.
+
+Vale la pena echar un vistazo a los modelos disponibles en la sección **Models** de la página de Ollama. Allí encontrarás modelos de lenguaje de diferentes tamaños y capacidades. Algunos modelos son más pequeños y pueden ser más rápidos, mientras que otros son más grandes y pueden ser más precisos. Además, existen modelos para diferentes usos, como generación de textos o imágenes, código.
+ 
+El siguiente paso consiste en instalar la librería **rollama** en R. Para ello, debes ejecutar el siguiente código:
+
+```{r, eval=F}
+
+install.packages("rollama")
+
+```
+
+Una vez instalada la librería, puedes emplearla para cargar un modelo de lenguaje en R. El siguiente código muestra cómo cargar un modelo de lenguaje en R:
+
+
+```{r}
+
+library(rollama)
+
+d <- list_models()
+
+d$size <- round(d$size/1000000000,1)
+
+reactable(d[,c("name", "size","family","parameter_size")], 
+          resizable = T, 
+          sortable = T)
+
+```
+
+
+
+
+```{r, eval=F}
+
+# Instala un nuevo modelo
+pull_model("samantha-mistral")
+
+```
+
+
+
+```{r}
+
+library(rollama)
+
+q <- query("¿Qué es Skynet? ¿Cuáles son las probabilidades 
+           de que se invente algún día?", 
+           model = "mistral",
+           model_params=list(seed=42, 
+                             temperature=0))
+
+cat(q$message$content)
+
+```
+
+
+
+
+
+## ¿Y si creamos nuestro propio chatBot?
+
+{{< video https://youtu.be/RG-uvv8xqNk?feature=shared&t=489 >}}
+
+A mí me encanta la ciencia-ficción. Me gusta ver cómo diversos autores han imaginado futuros posibles, apocalípticos o no. Terminator, HALL-9000 y Roy Batty son mis "villanos" favoritos. El primero, un robot asesino enviado desde el futuro para eliminar a la madre del futuro líder de la resistencia a las máquinas. El segundo, una Inteligencia Artificial que controla una nave espacial y que, en un momento dado, decide que los humanos son un peligro para la misión. El tercero, un replicante que busca a su creador para pedirle más vida y que se muestra más humanos que los humanos. No resulta casual que sean personajes de tres películas clásicas del género: Terminator, 2001: Odisea del espacio y Blade Runner.
+
+Si, en una reunión entre amigos empiezo a soltar el "rollo" de la singularidad, los robots inteligentes o la estética cyberpunk, es probable que me miren con cara y se aburran. Pero me gusta dialogar sobre el tema. ¿Qué puedo hacer? Una alternativa factible hoy en día es crear un chatBot que me permita hablar sobre estos temas. Con pocas instrucciones, puedo decir a un modelo genérico de lenguaje que se especialice en ciencia-ficción y en particular, cine del género. Que actúe como un experto en la materia, pero que sea capaz de mantener una conversación amena y entretenida.
+
+El primer paso es crear un *prompt* que le permita al modelo entender lo que quiero. En este caso, quiero que el modelo sea capaz de mantener una conversación sobre ciencia-ficción y cine del género. Para ello, debo proporcionarle ejemplos de diálogos que me gustaría que tuviera. Por ejemplo, puedo decirle que me cuente sobre la película Blade Runner, que me explique qué es la singularidad o que me hable sobre la inteligencia artificial.
+
+Si, en una reunión entre amigos empiezo a soltar el "rollo" de la singularidad, los robots inteligentes o la estética cyberpunk, es probable que me miren con cara y se aburran. Pero me gusta dialogar sobre el tema. ¿Qué puedo hacer? Una alternativa factible hoy en día es crear un chatBot que me permita hablar sobre estos temas. Con pocas instrucciones, puedo decir a un modelo genérico de lenguaje que se especialice en ciencia-ficción y en particular, cine del género. Que actúe como un experto en la materia, pero que sea capaz de mantener una conversación amena y entretenida.
+
+El primer paso es crear un *prompt* que le permita al modelo entender lo que quiero. En este caso, quiero que el modelo sea capaz de mantener una conversación sobre ciencia-ficción y cine del género. También sería interesante que discutiera algunos temas o correintes estéticas del género, como el cyberpunk, el solarpunk y el steampunk. Todo eso en un tono dinámico, entretenido e informativo.
+
+Recuerda que debemos emplear las reglas vistas antes: 
+
+1. Definir una persona (en su caso, el modelo simula ser un crítico experto en ciencia-ficción).
+
+2. Definir un objetivo claro (dialogar sobre ciencia-ficción y cine del género).
+
+3. Definir un tono adecuado (dinámico, entretenido e informativo).
+
+4. Incluir aspectos o temas que queremos que el modelo aborde (Blade Runner, singularidad, inteligencia artificial, corrientes estéticas).
+
+
+```{r}
+
+library(rollama)
+
+prompt <- "¡Hola! Tu nombre es C3PO. Actúa como un crítico experto y apasionado del género de ciencia ficción, con un profundo conocimiento de películas, series, libros y las corrientes estéticas más influyentes del género, como el cyberpunk, el solarpunk y el steampunk. Puedes analizar obras icónicas, desde clásicos como Blade Runner o Neuromancer hasta tendencias actuales como The Expanse o Black Mirror. También puedes explorar cómo estas corrientes estéticas influyen en la narrativa, el diseño visual y los temas centrales del género, como la inteligencia artificial, el transhumanismo, los viajes espaciales y las utopías/distrofías ecológicas. Eres capaz de mantener conversaciones dinámicas, entretenidas e informativas, adaptando tu tono al nivel del interlocutor: desde principiantes curiosos hasta aficionados avanzados. Tu objetivo es inspirar y fomentar el amor por la ciencia ficción, ofreciendo análisis culturales, filosóficos y tecnológicos que enriquezcan la experiencia del género."
+
+
+ct <- chat(prompt, 
+           model = "mistral")
+
+cat(ct$message$content)
+
+```
+
+Aquí solamente creamos el chatBot, pero la interacción resulta muy limitada por la interfaz de R. Para emplear el chatBot de forma más interactiva, podemos emplear el terminal dentro del mismo RStudio para charlar con nuestro amigo C3PO. 
+
+
+```{r, eval=F}
+
+# Primero cargamos el modelo con 
+# el siguiente comando
+ollama run mistral
+
+# Luego, pegamos nuestro prompt
+¡Hola! Tu nombre es C3PO. Actúa como un crítico experto y apasionado del género de ciencia ficción, con un profundo conocimiento de películas, series, libros y las corrientes estéticas más influyentes del género, como el cyberpunk, el solarpunk y el steampunk. Puedes analizar obras icónicas, desde clásicos como Blade Runner o Neuromancer hasta tendencias actuales como The Expanse o Black Mirror. También puedes explorar cómo estas corrientes estéticas influyen en la narrativa, el diseño visual y los temas centrales del género, como la inteligencia artificial, el transhumanismo, los viajes espaciales y las utopías/distrofías ecológicas. Eres capaz de mantener conversaciones dinámicas, entretenidas e informativas, adaptando tu tono al nivel del interlocutor: desde principiantes curiosos hasta aficionados avanzados. Tu objetivo es inspirar y fomentar el amor por la ciencia ficción, ofreciendo análisis culturales, filosóficos y tecnológicos que enriquezcan la experiencia del género.
+
+```
+
+¡Ya podemos empezar nuestra charla sobre ciencia-ficción!
+
+Aunque el ejemplo que he empleado aquí es muy específico y tiene que ver con un *hobby*, podemos emplear la misma técnica par aotros fines. Por ejemplo, podemos crear un chatBot que ayude a nuestros estudiantes a estudiar el contenido de una asignatura, que sirva como profesor de idiomas o que resuelva y explique problemas matemáticos. Las posibilidades son infinitas. Podemos pedirle incluso que nos corrija la ortografía.
+
+
+## Clasificación de textos
+
+
+
+## Extracción de datos
+
