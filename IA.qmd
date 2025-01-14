@@ -1,9 +1,6 @@
 ---
 title: "Modelos de<br><b>Inteligencia Artificial Generativa</b>"
 bibliography: references.bib
-format:
-  html:
-    code-overflow: wrap
 include-in-header:
   - text: |
       <style>

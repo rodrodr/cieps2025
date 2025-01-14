@@ -61,6 +61,7 @@ format:
     css: styles.css
     toc: true
     code-fold: show
+    code-overflow: wrap
   
 bibliography: references.bib
 
