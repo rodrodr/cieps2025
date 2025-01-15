@@ -70,7 +70,8 @@ pc <- c("devtools","ggplot2","ggrepel","ggdist",
         "tidyverse","knittr","kableExtra","rmarkdown",
         "poliscidata","psych","crosstable","corrplot",
         "ggpomological","igraph","netrankr","ggpmisc",
-        "forestplot","jtools","stargazer","distributional")
+        "forestplot","jtools","stargazer","distributional",
+        "tibble","purrr","forcats","stringr","httr")
 
 # Instala los paquetes
 install.packages(pc)
@@ -83,6 +84,8 @@ devtools::install_github("rstudio/learnr")
 devtools::install_github("rundel/learnrhash")
 devtools::install_github('bbc/bbplot')
 devtools::install_github("vdeminstitute/vdemdata")
+devtools::install_github("JBGruber/rollama")
+
 
 # Instala este paquete después de haber instalado los anteriores
 devtools::install_github("gadenbuie/ggpomological")
