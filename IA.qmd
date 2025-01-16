@@ -400,7 +400,7 @@ library(httr)
 
 # Carga los datos de texto almacenados 
 # en la nube
-response <- GET(url="https://www.dropbox.com/scl/fi/n14qy3tm6npc5ezrca1qh/asistencias.RData?rlkey=8irsje2ves8u3w1i791zu15ig&st=oe39jk9e&dl=1")
+response <- GET(url="https://github.com/rodrodr/cieps2025/raw/ccadffc3bbf8f510ae013278336da8a441bf2c0d/asistencias.RData")
 
 # Los guarda en el ordenador
 writeBin(response$content, "asistencia.Rdata")
