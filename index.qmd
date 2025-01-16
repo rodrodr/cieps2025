@@ -71,7 +71,11 @@ pc <- c("devtools","ggplot2","ggrepel","ggdist",
         "poliscidata","psych","crosstable","corrplot",
         "ggpomological","igraph","netrankr","ggpmisc",
         "forestplot","jtools","stargazer","distributional",
-        "tibble","purrr","forcats","stringr","httr")
+        "tibble","purrr","forcats","stringr","httr",
+        "readtext","stringi","pdftools","bibtex",
+        "quanteda","quanteda.textstats","quanteda.textplots",
+        "quanteda.textmodels","jsonlite","wordcloud",
+        "gridExtra","grid","htmltools","wordshoal")
 
 # Instala los paquetes
 install.packages(pc)

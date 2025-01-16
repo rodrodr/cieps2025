@@ -41,8 +41,10 @@ website:
               href: interactivo.qmd
       - section: Textos e IA
         contents:
-            - text: Análisis de textos
-              href: text_mining.qmd
+            - text: Análisis básico de textos
+              href: AT01_explora_inductivo.qmd
+            - text: Codificación y escalonado
+              href: AT02_codifica_escalonado.qmd
             - text: Modelos generativos (IA)
               href: IA.qmd
 
