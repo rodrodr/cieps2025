@@ -47,6 +47,45 @@ an <- aov(dem_score14~religoin, data = w)
 
 ```
 
+## Prepara los datos
+
+Este código sirve para preparar los datos.
+
+```{r, eval=F}
+
+library(poliscidata)
+
+# Crea las bases de países para los ejemplos
+w <- world[sample(1:nrow(world), 10),]
+w <- world
+
+wa <- w[,c("country","gini10","dem_level4","religoin", "spendhealth")]
+wb <- w[,c("country","hdi","pop_urban","lifeex_total", "durable")]
+
+w1 <- w[1:83,]
+w2 <- w[84:167,]
+
+
+# Crea la base de los estados para los ejemplos
+d <- states
+
+
+# Crea la base de los ocupantes del
+# Titanic
+tt <- data.frame(Titanic)
+
+tt <- tt[rep(row.names(tt), tt$Freq), 1:4]
+tt$First_Class <- 0
+tt$First_Class[tt$Class=="1st"] <- 1
+
+tt$Crew <- 0
+tt$Crew[tt$Class=="Crew"] <- 1
+
+```
+
+
+
+
 ## Medidas de Tendencia Central
 
 ### ¿Qué es la Tendencia Central?

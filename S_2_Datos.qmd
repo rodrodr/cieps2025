@@ -109,6 +109,22 @@ En esta sección del tutorial se presentan algunas pistas sobre cómo navegar da
 Para ilustrar las ideas, seleccionamos 10 países y algunas variables del conjunto de datos mundial originalmente contenido en el paquete 'polscidata'. Lo llamamos *w* (de *world*, vamos), puedes inspeccionar el contenido en el siguiente fragmento de código:
 
 ```{r 04_df1a, exercise=TRUE, exercise.lines=4, eval=F}
+
+# Crea las bases de datos para los ejemplos
+# a continuación
+
+library(poliscidata)
+
+set.seed(12345)
+w <- world[sample(1:nrow(world), 10),]
+w <- world
+wa <- w[,c("country","gini10","dem_level4","religoin", "spendhealth")]
+wb <- w[,c("country","hdi","pop_urban","lifeex_total", "durable")]
+
+w1 <- w[1:83,]
+w2 <- w[84:167,]
+
+
 # Muestra todos los valores de w
 w
 
@@ -116,6 +132,8 @@ w
 
 
 ```{r 04_df1, exercise=TRUE, exercise.lines=4, echo=F}
+
+
 # Muestra todos los valores de w
 reactable(w, sortable = T, resizable = T, searchable = T, wrap = F, theme = reactableTheme(
   backgroundColor = "transparent"))
